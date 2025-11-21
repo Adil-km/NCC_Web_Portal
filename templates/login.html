@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Login page</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    </form>
+
+
+
+{% endblock body %}

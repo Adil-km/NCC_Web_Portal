@@ -6,6 +6,16 @@
     <title>NCC Web Portal</title>
 </head>
 <body>
-    <h1>Home page</h1>
+    {% block navbar %}
+        {% include "navbar.html" %}
+    {% endblock navbar %}
+    
+    {% block body %}
+    {% endblock body %}
+    
+    {% block footer %}
+    {% endblock footer %}
+
+    
 </body>
 </html>
