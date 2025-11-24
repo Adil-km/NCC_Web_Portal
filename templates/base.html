@@ -6,6 +6,10 @@
     <title>NCC Web Portal</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <h2>{{ user.username }}</h2>
+    {% endif%}
+    
     {% block navbar %}
         {% include "navbar.html" %}
     {% endblock navbar %}
