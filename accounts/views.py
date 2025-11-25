@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import Group
 
 
-@permission_required('auth.adminr')
+@permission_required('auth.admin')
 def assign_role(request, user_id, role_id):
     user = get_object_or_404(User, id=user_id)
     role = get_object_or_404(Group, id=role_id)
