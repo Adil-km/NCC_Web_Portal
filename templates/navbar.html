@@ -6,6 +6,7 @@
     <a href="{% url 'achievements' %}">Achievements</a>
     <a href="{% url 'event' %}">Event</a>
     {% if user.is_authenticated %}
+    <a href="{% url 'dashboard' %}">Dashboard</a>
     <a href="{% url 'logout' %}">logout</a>
     {% else %}
     <a href="{% url 'login' %}">Login</a>

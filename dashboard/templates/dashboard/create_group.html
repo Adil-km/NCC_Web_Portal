@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body %}
+    <h2>Create New Role / Group</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Create Group</button>
+    </form>
+{% endblock body %}
+
+
+
+
+
