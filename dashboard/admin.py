@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+admin.site.site_header = "My College NCC Admin"
+admin.site.site_title = "NCC Admin Portal"
+admin.site.index_title = "Welcome to the NCC Administration Dashboard"
