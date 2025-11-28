@@ -1,6 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
 from .forms import AssignRoleForm, CreateGroupWithPermissionsForm
+from accounts.decorators import (
+    admin_required, 
+    cadet_required, 
+    faculty_required,
+    higher_faculty_required,
+    group_required,
+    role_required
+)
+
 
 # Create your views here.
 
@@ -10,6 +19,7 @@ def dashboard(request):
 def faculty(request):
     return render(request, 'dashboard/faculty.html')
 
+@cadet_required
 def cadet(request):
     return render(request, 'dashboard/cadet.html')
 
