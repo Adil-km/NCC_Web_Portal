@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
-from .forms import AssignRoleForm, CreateGroupWithPermissionsForm
+from .forms import AssignGroupForm, CreateGroupWithPermissionsForm
 from accounts.decorators import (
     admin_required, 
     cadet_required, 
@@ -10,12 +10,12 @@ from accounts.decorators import (
     role_required
 )
 
-
 # Create your views here.
 
 def dashboard(request):
     return render(request, 'dashboard/home.html')
 
+@faculty_required
 def faculty(request):
     return render(request, 'dashboard/faculty.html')
 
@@ -23,41 +23,36 @@ def faculty(request):
 def cadet(request):
     return render(request, 'dashboard/cadet.html')
 
-
-def assign_role_view(request):
+@higher_faculty_required
+def assign_group(request):
     if request.method == "POST":
-        form = AssignRoleForm(request.POST)
+        form = AssignGroupForm(request.POST)
         if form.is_valid():
-            user = form.cleaned_data['user']
-            group = form.cleaned_data['group']
-            
-            # remove old roles if needed
-            user.groups.clear()
-            
-            # assign new role
+            user = form.cleaned_data["user"]
+            group = form.cleaned_data["group"]
             user.groups.add(group)
-            
-            return redirect("assign-role")   # redirect to same page
+            return redirect("assign-group")
     else:
-        form = AssignRoleForm()
+        form = AssignGroupForm()
 
     return render(request, "dashboard/faculty.html", {"form": form})
 
-def create_group_view(request):
+
+@higher_faculty_required
+def create_group(request):
     if request.method == "POST":
         form = CreateGroupWithPermissionsForm(request.POST)
         if form.is_valid():
-            group_name = form.cleaned_data['name']
-            permissions = form.cleaned_data['permissions']
+            name = form.cleaned_data["name"]
+            perms = form.cleaned_data["permissions"]
 
-            # Create new group
-            group, created = Group.objects.get_or_create(name=group_name)
+            group = Group.objects.create(name=name)
+            group.permissions.set(perms)
+            group.save()
 
-            # Add permissions
-            group.permissions.set(permissions)
-
-            return redirect("create-group")  # refresh page
+            return redirect("create-group")
     else:
         form = CreateGroupWithPermissionsForm()
 
     return render(request, "dashboard/create_group.html", {"form": form})
+

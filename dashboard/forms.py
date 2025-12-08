@@ -2,16 +2,19 @@ from django import forms
 from django.contrib.auth.models import Group, Permission
 from accounts.models import User  
 
-class AssignRoleForm(forms.Form):
+class AssignUserRoleForm(forms.Form):
     user = forms.ModelChoiceField(
         queryset=User.objects.all(),
         label="Select User"
     )
-
-    group = forms.ModelChoiceField(
-        queryset=Group.objects.all(),
-        label="Select Role / Group"
+    role = forms.ChoiceField(
+        choices=User.Role.choices,
+        label="Select Role"
     )
+
+class AssignGroupForm(forms.Form):
+    user = forms.ModelChoiceField(queryset=User.objects.all())
+    group = forms.ModelChoiceField(queryset=Group.objects.all())
 
 class CreateGroupWithPermissionsForm(forms.Form):
     name = forms.CharField(
