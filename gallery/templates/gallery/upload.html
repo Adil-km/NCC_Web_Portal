@@ -1,0 +1,25 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block body %}
+<h1>Upload Images</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {{ form.image.errors }}
+    {{ form.image }}
+<br>
+<br>
+{{ form.description.errors }}
+{{ form.description }}
+<br>
+<br>
+
+    <input type="submit" value="Upload">
+</form>
+
+
+
+{% endblock body %}

@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+
+
+{% block body %}
+<h1>Gallery section</h1>
+
+{% if images %}
+    {% for image in images %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}" width="300">
+    {% endfor %}
+{% else %}
+    <p>No images.</p>
+{% endif %}
+
+{% endblock body %}
