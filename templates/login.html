@@ -1,7 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block header %}<link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock header %}
+
 
 {% block body %}
-    <h1>Login page</h1>
+    
+  <section class="section-colored login">
+	      <h2 style="color: #8B0000; text-align: center;"> Login</h2>
+	            
 
     <form method="post" enctype="application/x-www-form-urlencoded">
         {% csrf_token %}
@@ -11,13 +21,15 @@
         <input type="password" name="password" id="password" required>
         <input type="submit" value="Login">
     </form>
+
     {% if messages %}
         {% for message in messages %}
-            <div>
+            <div style="color:red;text-align:center;">
                 {{ message }}
             </div>
+
         {% endfor %}
     {% endif %}
-
+</section>
 
 {% endblock body %}

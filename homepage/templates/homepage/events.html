@@ -1,0 +1,41 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block header %}
+
+<link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'homepage/css/events.css' %}">
+{% endblock header %}
+
+
+{% block body %}
+ <main class="gallery-page">
+    <div class="breadcrumb">Home / Gallery</div>
+
+    <div class="container">
+      <aside class="sidebar">
+        <button>Campus</button>
+        <button class="active">Events</button>
+        <button>Batch</button>
+        <button>Results</button>
+      </aside>
+
+      <section class="gallery-grid">
+        <div class="gallery-item">
+          <img src="{% static 'images/event1.jpg' %}" alt="Ncc farook college" />
+          <p>WORLD ENVIRONMENT DAY </p>
+        </div>
+        <div class="gallery-item">
+          <img src="{% static 'images/event2.jpg' %}" alt="Main Block" />
+          <p>15 AUGUST 2025
+INDEPENDENCE DAY</p>
+        </div>
+        <div class="gallery-item">
+          <img src="{% static 'images/event3.jpg' %}" alt="Abussabah Library" />
+        <p>INTERNATIONAL DAY AGAINST DRUG ABUSE AND ILLICIT TRAFFICKING
+26 JUNE 2025</p>
+        </div>
+      </section>
+    </div>
+  </main>
+{% endblock body %}

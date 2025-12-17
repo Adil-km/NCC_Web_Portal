@@ -1,0 +1,34 @@
+.login {
+      background-color: #fceeee;
+      padding: 50px 20px;
+    }
+
+    .login form {
+      max-width: 400px;
+      margin: 30px auto 0;
+    }
+
+    .login label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .login input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .login input[type=submit] {
+      background-color: #A52A2A;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }

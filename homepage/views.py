@@ -23,4 +23,5 @@ def callToAction(request):
 def contact(request):
     return render(request, "contact.html")
 
-
+def events(request):
+    return render(request, "homepage/events.html")

@@ -1,6 +1,11 @@
 {% extends 'homepage/base.html' %}
 {% load static %}
 
+{% block header %}
+<link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
+{% endblock header %}
+
+
 {% block body %}
     <div class="pic">
         <div class="flag">
