@@ -8,17 +8,21 @@
 {% block body %}
 
 <section class="gallery-section">
-    <h2>Our Gallery</h2>
-    <div class="gallery-grid" id="galleryGrid">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 1" data-desc="This is the first image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 2" data-desc="This is the second image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 3" data-desc="This is the third image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 4" data-desc="This is the fourth image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 5" data-desc="This is the fifth image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 6" data-desc="This is the sixth image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 4" data-desc="This is the fourth image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 5" data-desc="This is the fifth image.">
-      <img src="{% static 'gallery/images/sample.jpg' %}" alt="Image 6" data-desc="This is the sixth image.">
+<h2>Our Gallery</h2>
+<div class="gallery-grid" id="galleryGrid">
+
+
+{% if images %}
+    {% for image in images %}
+
+	<img src="{{ image.image.url }}" alt="Image" data-desc="{{ image.description }}">
+
+    {% endfor %}
+{% else %}
+    <p>No images.</p>
+{% endif %}
+
+
     </div>
   </section>
 
