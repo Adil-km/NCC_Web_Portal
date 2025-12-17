@@ -1,0 +1,189 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="pic">
+        <div class="flag">
+            <img src="{% static 'homepage/images/sample.jpg' %}" alt="">
+            <h2>एकताऔरअनुशासन</h2>
+            <img src="{% static 'homepage/images/sample.jpg' %}" alt="">
+        </div>
+    </div>
+    
+
+ <!-- Slideshow Section -->
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="{% static 'homepage/images/sample.jpg' %}" alt="NCC Girls Parade" class="slide-img">
+    <div class="caption">Unity and Discipline in Action</div>
+  </div>
+    <div class="mySlides fade">
+    <img src="{% static 'homepage/images/sample.jpg' %}" alt="NCC Girls Parade" class="slide-img">
+    <div class="caption">Unity and Discipline in Action</div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="{% static 'homepage/images/sample.jpg' %}" alt="All Wings Together" class="slide-img">
+    <div class="caption">Proud to Serve, Together</div>
+  </div>
+
+  <div class="mySlides fade">
+    <img src="{% static 'homepage/images/sample.jpg' %}" alt="Naval Cadets" class="slide-img">
+    <div class="caption">Bravery on Land and Sea</div>
+  </div>
+
+  <!-- Prev and Next buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<!-- Dots -->
+<div style="text-align:center; margin-top: 10px;">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+    <script>
+
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    for (i = 0; i < dots.length; i++) {
+      dots[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+  }
+
+  // Optional: Auto slide every 4 sec
+  setInterval(() => {
+    plusSlides(1);
+  }, 4000);
+</script>
+
+
+
+<div class="about-section">
+  <div class="about-img">
+    <img src="{% static 'homepage/images/sample.jpg' %}" alt="NCC Girls Parade">
+  </div>
+  <div class="about-text">
+    <h3>ABOUT US</h3>
+    <p>Welcome to the official website of <strong>NCC Farook College</strong>.</p>
+    <p>The National Cadet Corps (NCC) is the youth wing of the Armed Forces of India. At Farook College, our NCC unit plays a vital role in shaping disciplined, responsible, and patriotic citizens. We provide students with opportunities for leadership, community service, physical training, and adventure activities.</p>
+    <p>Our cadets actively participate in various national-level camps, parades, and social initiatives, proudly representing the values of Unity and Discipline. With the guidance of dedicated ANOs and trainers, we aim to build strong character and inspire a spirit of selfless service among youth.</p>
+    <p>Join us, and be a part of a legacy that builds the nation with courage and commitment.</p>
+  </div>
+</div>
+
+
+    <div class="Box">
+        <div class="div1">
+            <h4>500+<br>Dedicated cantidates</h4>
+        </div>
+        <div class="div2">
+            <h4>25+<br>Years of exelence</h4>
+        </div>
+        <div class="div3">
+            <h4>10+<br>Camps Annually</h4>
+        </div>
+    </div>
+    <div class="read">
+        <a href="">Read More our Ncc</a>
+    </div>
+
+
+    <div class="whycontainer">
+        <p class="why-p">why join Ncc? your path to exelence</p>
+        <p class="why-p2">Unlock your potential and embark on a transformative journey with the National Cadet Corps.
+            Here’s what you stand to gain</p>
+
+    </div>
+    <div class="box-container">
+        <div class="box-content1">
+            <div class="box-circle"></div>
+            <div class="box-heading">
+
+                <p class="box-h">Leadership Development</p>
+                <p class="box-p">Cultivate essential leadership qualities, <br>
+                    decision-making skills, and effective <br>
+                    teamwork through practical training.</p>
+            </div>
+        </div>
+        <div class="box-content2">
+            <div class="box-circle"></div>
+            <div class="box-heading">
+                <p class="box-h">Adventure&Exploration</p>
+                <P>Engage in thrilling outdoor activities, <br>
+                    including trekking, camping, and <br>
+                    obstacle courses, pushing personal <br>
+                    boundaries.</P>
+            </div>
+        </div>
+        <div class="box-content3">
+            <div class="box-circle"></div>
+            <div class="box-heading">
+                <p class="box-h">Community Service</p>
+                <p>Contribute meaningfully to society <br>
+                    through various community <br>
+                    development, environmental, and social<br>
+                    awareness programs</p>
+
+            </div>
+        </div>
+        <div class="box-content4">
+       
+            <div class="box-circle"></div>
+            <div class="box-heading">
+                <p class="box-h">Career Opportunities</p>
+                <P>Enhance your profile for competitive <br>
+                    examinations and direct entry schemes<br>
+                    into the Armed Forces and other public <br>
+                    services.</P>
+            </div>
+        </div>
+        <div class="box-content5">
+            <div class="box-circle"></div>
+            <div class="box-heading">
+                <p class="box-h">Certifications (B & C)</p>
+                <p>Attain highly valued 'B' and C
+                    certificates,<br> providing significant
+                    advantages<br> in various educational and
+                    professional pursu</p>
+            </div>
+        </div>
+
+        <div class="apply-container">
+
+            <div class="apply-conent">
+                <p class="apply-p"><b>Ready to make a Difference</b></p>
+                <p>join the NCC and embark on a transformative journey of personal growth,<br> unwavering
+                    discipline, and invaluable service to the nation. Your future starts now!</p>
+                <button class="button">Apply For The next Batch</button>
+                <br>
+            </div>
+
+        </div>
+{% endblock body %}
