@@ -4,28 +4,28 @@
     <div class="footer-links">
         <div class="logo-section">
             <div class="logo-row">
-                <img src="{% static 'homepage/images/sample.jpg' %}" alt="College Logo" class="logo-img">
+                <img src="{% static 'images/FAROOK_COLLEGE_LOGO.png' %}" alt="College Logo" class="logo-img">
 
                 <span>FAROOK COLLEGE AUTONOMOUS</span>
             </div>
             <div class="logo-row">
-                <img src="{% static 'homepage/images/sample.jpg' %}" alt="College Logo" class="logo-img">
+                <img src="{% static 'images/NCC_LOGO.png' %}" alt="College Logo" class="logo-img">
                 <span>NCC FAROOK COLLEGE</span>
             </div>
         </div>
 
         <div class="footer-column">
             <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
+	    <a href="{% url 'home' %}">Home</a>
+            <a href="#about">About Us</a>
             <a href="#">Enrolment</a>
             <a href="#">Contact Us</a>
-            <a href="#">Cadet Login</a>
+	    <a href="{% url 'login' %}">Cadet Login</a>
         </div>
 
         <div class="footer-column">
             <h3>Contact Us</h3>
-            <p>Address: [Your College Address],<br>[City], [State] - [PIN]</p>
+            <p>Address: Farook College Autonomous,<br>Calicut, Kerala - 673631</p>
             <p>Phone: +91 12345 67890</p>
             <p>Email: <a href="mailto:info@yournccunit.com">info@yournccunit.com</a></p>
         </div>
