@@ -58,9 +58,18 @@ color:white;
             background-color: brown;
             display: flex;
             align-items: center;
-	    
+            justify-content: space-between;
             padding: 10px;
             gap: 15px;
+        }
+
+        .login{
+            background-color: white;
+            padding: 5px 20px;
+            border-radius: 4px;
+            color: brown;
+            font-size: 1em;
+            font-weight: bold;
         }
 
         .logo img {
@@ -68,7 +77,7 @@ color:white;
             width: 100px;
         }
 
-        .logo h1 {
+        .logo .logos h1 {
             color: cornsilk;
             font-size: 20px;
             border: none;
