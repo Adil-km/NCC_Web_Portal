@@ -374,6 +374,7 @@ color:white;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
+            padding-inline: 20px;
         }
 
         .box-content1 {
@@ -387,7 +388,7 @@ color:white;
             position: relative;
             color: cornsilk;
             border-radius: 10px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./leadership.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/leadership.jpg");
             background-position: right;
         }
      .box-content2 {
@@ -401,7 +402,7 @@ color:white;
             position: relative;
             color: cornsilk;
             border-radius: 10px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./adventure.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/adventure.jpg");
             background-position: right;
         }
         .box-content3 {
@@ -415,7 +416,7 @@ color:white;
             position: relative;
             color: cornsilk;
             border-radius: 10px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./adventure.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/adventure.jpg");
             background-position: center;
             background-size: cover;
         }
@@ -430,7 +431,7 @@ color:white;
             position: relative;
             color: cornsilk;
             border-radius: 10px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./career.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/career.jpg");
             background-position: center;
             background-size: cover;
         }
@@ -445,16 +446,16 @@ color:white;
             position: relative;
             color: cornsilk;
             border-radius: 10px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./certificate.jpg");
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/certificate.jpg");
             background-position: center;
             background-size: cover;
         }
-        .box-circle {
+        /* .box-circle {
             padding: 25px;
             background-color: rgb(228, 213, 213);
             border-radius: 50%;
 
-        }
+        } */
 
         .box-h {
             font-size: 24px;
@@ -470,7 +471,7 @@ color:white;
             gap: 30px;
             flex-wrap: wrap;
             flex-direction: column;
-            ;
+            margin-top: 100px;
             justify-content: center;
             align-items: center;
 
