@@ -6,7 +6,7 @@ def home(request):
     return render(request, "homepage/home.html")
 
 def about(request):
-    return render(request, "about.html")
+    return render(request, "homepage/about.html")
 
 def achievements(request):
     return render(request, "achievements.html")

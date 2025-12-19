@@ -1,0 +1,24 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
+{% endblock header %}
+
+
+{% block body %}
+
+<div class="about-section" id="about">
+  <div class="about-img">
+    <img src="{% static 'images/event2.jpg' %}" alt="NCC Girls Parade">
+  </div>
+  <div class="about-text">
+    <h3>ABOUT US</h3>
+    <p>Welcome to the official website of <strong>NCC Farook College</strong>.</p>
+    <p>The National Cadet Corps (NCC) is the youth wing of the Armed Forces of India. At Farook College, our NCC unit plays a vital role in shaping disciplined, responsible, and patriotic citizens. We provide students with opportunities for leadership, community service, physical training, and adventure activities.</p>
+    <p>Our cadets actively participate in various national-level camps, parades, and social initiatives, proudly representing the values of Unity and Discipline. With the guidance of dedicated ANOs and trainers, we aim to build strong character and inspire a spirit of selfless service among youth.</p>
+    <p>Join us, and be a part of a legacy that builds the nation with courage and commitment.</p>
+  </div>
+</div>
+
+{% endblock body %}
