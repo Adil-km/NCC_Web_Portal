@@ -63,7 +63,7 @@ color:white;
             gap: 15px;
         }
 
-        .login{
+        .login-btn{
             background-color: white;
             padding: 5px 20px;
             border-radius: 4px;
@@ -77,6 +77,11 @@ color:white;
             width: 100px;
         }
 
+        .logos{
+            display: flex;
+            align-items: center;
+        }
+    
         .logo .logos h1 {
             color: cornsilk;
             font-size: 20px;
@@ -479,8 +484,8 @@ color:white;
         }
 
         .apply-conent {
-            height: 200px;
-            width: 600px;
+            height: auto;
+            width: auto;
             background-color: brown;
             display: flex;
             flex-direction: column;
@@ -490,7 +495,9 @@ color:white;
             color: cornsilk;
             border-radius: 10px;
             text-align: center;
-
+            padding: 37px;
+            gap: 10px;
+            margin-top: 80px;
         }
 
         .apply-p {
@@ -509,16 +516,20 @@ color:white;
             margin: 4px 2px;
             cursor: pointer;
             background-color: cornsilk;
+            border-radius: 5px;
         }
 
         .whycontainer {
-            height: 50px;
+            height: auto;
+            width: 60vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin: 20px;
+            margin-block: 40px;
+            border-radius: 5px;
+            margin-inline: auto;
             background-color: brown;
-
+            padding: 30px;
         }
 
         .why-p {
