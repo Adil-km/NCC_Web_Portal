@@ -14,9 +14,16 @@
 
 {% if images %}
     {% for image in images %}
+    <div>
 
 	<img src="{{ image.image.url }}" alt="Image" data-desc="{{ image.description }}">
+  <a href="{% url 'edit_gallery' image.id %}">Edit</a>
+  <form method="POST" action="{% url 'delete_image' image.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
 
+</div>
     {% endfor %}
 {% else %}
     <p>No images.</p>
