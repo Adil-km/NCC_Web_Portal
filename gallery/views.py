@@ -24,7 +24,7 @@ def upload_gallery(request):
         {'form': form}
     )
 
-def edit_gallery(request, pk):
+def edit_image(request, pk):
     image_obj = get_object_or_404(Gallery, pk=pk)
 
     if request.method == "POST":
