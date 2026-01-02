@@ -2,30 +2,73 @@
 {% load static %}
 
 {% block body %}
-<h1>Upload Images</h1>
+<h1>{% if edit %}Edit Image{% else %}Upload Image{% endif %}</h1>
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+
     {{ form.non_field_errors }}
 
-    {% if edit %}
-        <img src="{{ image_obj.image.url }}" width="200" alt="{{ image_obj.description }}"/>
-    {% else %}
-        {{ form.image.errors }}
-        {{ form.image }}
-    {% endif %}
-<br>
-<br>
-{{ form.description.errors }}
-{{ form.description }}
-<br>
-<br>
+    <!-- Image -->
+    <div>
+        <label>Image</label>
+        {% if edit %}
+            <img src="{{ image_obj.image.url }}" width="200" alt="{{ image_obj.title }}">
+            {{ form.image.errors }}
+            {{ form.image }}
+        {% else %}
+            {{ form.image.errors }}
+            {{ form.image }}
+        {% endif %}
+    </div>
+    <!-- Title -->
+    <div>
+        <label>Title</label>
+        {{ form.title.errors }}
+        {{ form.title }}
+    </div>
+    <!-- Description -->
+    <div>
+        <label>Description (optional)</label>
+        {{ form.description.errors }}
+        {{ form.description }}
+    </div>
+    <!-- Content -->
+    <div>
+        <label>Content (optional)</label>
+        {{ form.content.errors }}
+        {{ form.content }}
+    </div>
+    <!-- Author -->
+    <div>
+        <label>Author (optional)</label>
+        {{ form.author.errors }}
+        {{ form.author }}
+    </div>
+
+    <!-- Visibility -->
+    <div>
+        <label>Visibility</label>
+        {{ form.visibility.errors }}
+        {{ form.visibility }}
+    </div>
+    <!-- Category -->
+    <div>
+        <label>Category</label>
+        {{ form.category.errors }}
+        {{ form.category }}
+    </div>
+
+    <!-- Date -->
+    <div>
+        <label>Date</label>
+        {{ form.date.errors }}
+        {{ form.date }}
+    </div>
     <button type="submit">
         {% if edit %} Update {% else %} Upload {% endif %}
     </button>
 
 </form>
-
-
 
 {% endblock body %}
