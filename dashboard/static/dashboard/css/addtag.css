@@ -1,0 +1,169 @@
+/* =========================
+   PROJECT THEME VARIABLES
+========================= */
+
+:root{
+    --heading-1: 2rem;
+    --heading-2: 1.4rem;
+    --text-1: 1rem;
+
+    --brown: #982b35;
+    --brown-dark: #7b242d;
+    --black: #14080E;
+    --white-1:#ffffff;
+    --white-2:#FFF4F5;
+}
+
+/* =========================
+   ADD TAG CONTAINER
+========================= */
+
+.addtag-container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--white-2);
+    border-radius: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--black);
+}
+
+.addtag-container h2 {
+    text-align: center;
+    font-size: var(--heading-1);
+    color: var(--brown);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* =========================
+   FORM LABELS
+========================= */
+
+.addtag-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: var(--text-1);
+    font-weight: 600;
+    color: var(--black);
+}
+
+/* =========================
+   USER SELECT DROPDOWN
+========================= */
+
+.addtag-container select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 2px solid var(--brown);
+    background: var(--white-1);
+    color: var(--black);
+    font-size: var(--text-1);
+    cursor: pointer;
+}
+
+.addtag-container select:focus {
+    outline: none;
+    border-color: var(--brown-dark);
+}
+
+/* =========================
+   TAGS SECTION
+========================= */
+
+.mb-4 {
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+#id_tags {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+}
+
+#id_tags > div {
+    background: var(--white-1);
+    border: 2px solid var(--brown);
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+#id_tags > div:hover {
+    background: var(--white-2);
+    border-color: var(--brown-dark);
+}
+
+#id_tags label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* =========================
+   CUSTOM CHECKBOX
+========================= */
+
+#id_tags input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid var(--brown);
+    background: var(--white-1);
+    cursor: pointer;
+    position: relative;
+}
+
+#id_tags input[type="checkbox"]:checked {
+    background: var(--brown);
+    border-color: var(--brown);
+}
+
+#id_tags input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: -2px;
+    left: 4px;
+    font-size: 14px;
+    color: var(--white-1);
+    font-weight: 800;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.addtag-container input[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--brown);
+    color: var(--white-1);
+    font-size: var(--text-1);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.addtag-container input[type="submit"]:hover {
+    background: var(--brown-dark);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+    .addtag-container {
+        padding: 22px;
+    }
+
+    .addtag-container h2 {
+        font-size: var(--heading-2);
+    }
+}

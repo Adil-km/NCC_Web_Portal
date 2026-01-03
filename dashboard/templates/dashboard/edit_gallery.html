@@ -18,6 +18,26 @@
             data-desc="{{ image.description }}"
           >
 
+          <div class="actions">
+            <form method="GET" action="{% url 'edit_image' image.id %}">
+              <button type="submit"  class="update">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Update</span>
+              </button>
+            </form>
+
+            <form method="POST" action="{% url 'delete_image' image.id %}">
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="delete"
+                onclick="return confirm('Are you sure you want to delete this image?')">
+                <i class="fa-solid fa-trash"></i>
+                <span>Delete</span>
+              </button>
+            </form>
+          </div>
+
         </div>
         
         {% endfor %}

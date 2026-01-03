@@ -183,6 +183,10 @@
     font-size: 1rem;
 }
 
+.info-item li.value{
+    margin-left: 20px;
+}
+
 /* --- SIDEBAR COMPONENTS --- */
 .profile-sidebar {
     display: flex;

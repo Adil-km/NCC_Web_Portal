@@ -10,4 +10,11 @@ urlpatterns = [
     path('cadet/', views.cadet, name="cadet" ),
     path('faculty/', views.faculty, name="faculty" ),
     path('profile/', views.profile, name="profile" ),
+    path('addtag/', views.addtag, name="addtag" ),
+    
+    # Gallery Managing
+    path('gallery/', views.gallery, name="dashboard_gallery" ),
+    path('gallery/upload/', views.upload_gallery, name="upload_gallery" ),
+    path("gallery/edit/<int:pk>/", views.edit_image, name="edit_image"),
+    path("gallery/delete/<int:pk>/", views.delete_image, name="delete_image"),
 ]

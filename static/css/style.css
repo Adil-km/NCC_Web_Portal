@@ -165,6 +165,7 @@ nav a{
 
 .main-container{
     background-color: var(--white-1);
+    min-height: 70vh;
 }
 
 .header-flag img {

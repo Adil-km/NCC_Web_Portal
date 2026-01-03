@@ -1,0 +1,51 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'dashboard/css/addtag.css' %}">
+{% endblock header %}
+
+
+{% block body %}
+<section class="addtag-container">
+	<h2>Assign Tags to User</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="error-container">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="get">
+        <label for="user">Select User:</label>
+        <select name="user" id="user" onchange="this.form.submit()">
+            <option value="">-- Select User --</option>
+            {% for user in form.fields.user.queryset %}
+                <option value="{{ user.id }}" {% if selected_user and user.id == selected_user.id %}selected{% endif %}>
+                    {{ user.username }} ({{ user.role }})
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% if selected_user %}
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- ✅ THIS IS THE FIX -->
+            <input type="hidden" name="user" value="{{ selected_user.id }}">
+
+            <div class="mb-4">
+                {{ form.tags.label_tag }}
+                {{ form.tags }}
+            </div>
+
+            <input type="submit" value="Update Tags">
+        </form>
+    {% endif %}
+
+</section>
+
+{% endblock body %}
