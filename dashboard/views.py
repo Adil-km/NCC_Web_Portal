@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
 from .forms import AssignGroupForm, CreateGroupWithPermissionsForm
+from django.contrib.auth.decorators import login_required
 from accounts.decorators import (
     admin_required, 
     cadet_required, 
@@ -14,6 +15,10 @@ from accounts.decorators import (
 
 def dashboard(request):
     return render(request, 'dashboard/home.html')
+
+@login_required(login_url='login')
+def profile(request):
+    return render(request, 'dashboard/profile.html')
 
 @faculty_required
 def faculty(request):

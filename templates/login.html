@@ -1,16 +1,10 @@
 {% extends 'homepage/base.html' %}
 {% load static %}
 
-{% block header %}<link rel="stylesheet" href="{% static 'homepage/css/home.css' %}">
-
-<link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% endblock header %}
-
-
 {% block body %}
     
-  <section class="section-colored">
-	      <h2 style="color: #8B0000; text-align: center;"> Login</h2>
+  <section class="login-container">
+	      <h2> Login</h2>
 	            
     <div class="login">
         <form method="post" enctype="application/x-www-form-urlencoded">
@@ -19,18 +13,17 @@
             <input type="text" name="username" id="username" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-container">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <input type="submit" value="Login">
         </form>
     </div>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div style="color:red;text-align:center;">
-                {{ message }}
-            </div>
-
-        {% endfor %}
-    {% endif %}
 </section>
 
 {% endblock body %}

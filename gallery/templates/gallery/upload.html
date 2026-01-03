@@ -1,74 +1,76 @@
-{% extends '../base.html' %}
+{% extends 'homepage/base.html' %}
 {% load static %}
 
 {% block body %}
-<h1>{% if edit %}Edit Image{% else %}Upload Image{% endif %}</h1>
+<div class="upload-container">
+    <h1>{% if edit %}Edit Image{% else %}Upload Image{% endif %}</h1>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    {{ form.non_field_errors }}
+        {{ form.non_field_errors }}
 
-    <!-- Image -->
-    <div>
-        <label>Image</label>
-        {% if edit %}
-            <img src="{{ image_obj.image.url }}" width="200" alt="{{ image_obj.title }}">
-            {{ form.image.errors }}
-            {{ form.image }}
-        {% else %}
-            {{ form.image.errors }}
-            {{ form.image }}
-        {% endif %}
-    </div>
-    <!-- Title -->
-    <div>
-        <label>Title</label>
-        {{ form.title.errors }}
-        {{ form.title }}
-    </div>
-    <!-- Description -->
-    <div>
-        <label>Description (optional)</label>
-        {{ form.description.errors }}
-        {{ form.description }}
-    </div>
-    <!-- Content -->
-    <div>
-        <label>Content (optional)</label>
-        {{ form.content.errors }}
-        {{ form.content }}
-    </div>
-    <!-- Author -->
-    <div>
-        <label>Author (optional)</label>
-        {{ form.author.errors }}
-        {{ form.author }}
-    </div>
+        <!-- Image -->
+        <div>
+            <label>Image</label>
+            {% if edit %}
+                <img src="{{ image_obj.image.url }}" alt="{{ image_obj.title }}">
+                {{ form.image.errors }}
+                {{ form.image}}
+                
+            {% else %}
+                {{ form.image.errors }}
+                {{ form.image }}
+            {% endif %}
+        </div>
+        <!-- Title -->
+        <div>
+            <label>Title</label>
+            {{ form.title.errors }}
+            {{ form.title }}
+        </div>
+        <!-- Description -->
+        <div>
+            <label>Description (optional)</label>
+            {{ form.description.errors }}
+            {{ form.description }}
+        </div>
+        <!-- Content -->
+        <div>
+            <label>Content (optional)</label>
+            {{ form.content.errors }}
+            {{ form.content }}
+        </div>
+        <!-- Author -->
+        <div>
+            <label>Author (optional)</label>
+            {{ form.author.errors }}
+            {{ form.author }}
+        </div>
 
-    <!-- Visibility -->
-    <div>
-        <label>Visibility</label>
-        {{ form.visibility.errors }}
-        {{ form.visibility }}
-    </div>
-    <!-- Category -->
-    <div>
-        <label>Category</label>
-        {{ form.category.errors }}
-        {{ form.category }}
-    </div>
+        <!-- Visibility -->
+        <div>
+            <label>Visibility</label>
+            {{ form.visibility.errors }}
+            {{ form.visibility }}
+        </div>
+        <!-- Category -->
+        <div>
+            <label>Category</label>
+            {{ form.category.errors }}
+            {{ form.category }}
+        </div>
 
-    <!-- Date -->
-    <div>
-        <label>Date</label>
-        {{ form.date.errors }}
-        {{ form.date }}
-    </div>
-    <button type="submit">
-        {% if edit %} Update {% else %} Upload {% endif %}
-    </button>
+        <!-- Date -->
+        <div>
+            <label>Date</label>
+            {{ form.date.errors }}
+            {{ form.date }}
+        </div>
+        <button type="submit">
+            {% if edit %} Update {% else %} Upload {% endif %}
+        </button>
+    </form>
 
-</form>
-
+</div>
 {% endblock body %}

@@ -1,0 +1,342 @@
+.profile-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 70vh;
+    padding: 50px 30px;
+}
+
+/* --- PROFILE HEADER --- */
+.profile-header {
+    background-color: var(--white-1);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+}
+
+.avatar-wrapper {
+    position: relative;
+}
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--brown);
+    object-fit: cover;
+    background-color: var(--gray-subtle);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #22c55e;
+    border: 3px solid var(--white-1);
+    border-radius: 50%;
+}
+
+.header-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.name-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.user-name {
+    font-size: var(--heading-1);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.badge {
+    background-color: var(--brown);
+    color: var(--white-1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.reg-no {
+    color: var(--brown);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.meta-info {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #555;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    font-size: 0.9rem;
+    border: none;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--brown);
+    color: var(--white-1);
+}
+
+.btn-primary:hover {
+    background-color: var(--brown-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--brown);
+    color: var(--brown);
+}
+
+.btn-outline:hover {
+    background-color: var(--white-2);
+}
+
+/* --- MAIN CONTENT GRID --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+}
+
+.main-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.profile-card {
+    background-color: var(--white-1);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    font-size: var(--heading-2);
+    color: var(--brown-dark);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--white-2);
+    padding-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.info-item label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: 0.6;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.info-item .value {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* --- SIDEBAR COMPONENTS --- */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Attendance Widget (Based on provided component) */
+.attendance-card {
+    background-color: var(--brown);
+    color: var(--white-1);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(152, 43, 53, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.attendance-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.attendance-card .percentage {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--brown-dark);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--white-1);
+    width: 88%;
+    transition: width 1s ease;
+}
+
+.disclaimer {
+    font-size: 0.75rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Training Materials List */
+.materials-list {
+    list-style: none;
+}
+
+.material-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--white-2);
+}
+
+.material-item:last-child {
+    border-bottom: none;
+}
+
+.material-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.download-icon {
+    color: var(--brown);
+    cursor: pointer;
+}
+
+/* Icons (Internal SVG sizing) */
+svg.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.watermark {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    opacity: 0.08;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-header {
+        justify-content: center;
+        text-align: center;
+    }
+    .name-row {
+        justify-content: center;
+    }
+    .meta-info {
+        justify-content: center;
+    }
+    .header-actions {
+        width: 100%;
+    }
+}
+
+/* Attendance label */
+.attendance-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Attendance percentage row */
+.attendance-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.attendance-total {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* Light button variant */
+.btn-light {
+    background-color: var(--white-1);
+    color: var(--brown);
+    margin-top: 8px;
+}
+
+/* Materials section title */
+.materials-title {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Brown icons */
+.icon-brown {
+    color: var(--brown);
+}

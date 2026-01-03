@@ -26,7 +26,7 @@ def upload_gallery(request):
 
 def edit_image(request, pk):
     image_obj = get_object_or_404(Gallery, pk=pk)
-
+    filename = image_obj.image.name.split('/')[1]
     if request.method == "POST":
         form = UploadImageForm(request.POST, request.FILES, instance=image_obj)
         if form.is_valid():
@@ -42,7 +42,8 @@ def edit_image(request, pk):
         {
             "form": form,
             "edit": True,
-            "image_obj": image_obj
+            "image_obj": image_obj,
+            "filename":filename
         }
     )
 
