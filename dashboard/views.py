@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 
 from accounts.models import User, UserTag
-from accounts.utils import user_has_tag
+from accounts.utils import user_has_tag, user_tag_codes
 from gallery.forms import UploadImageForm
 from gallery.models import Gallery
 from .forms import AssignGroupForm, AssignTagsForm, CreateGroupWithPermissionsForm
@@ -61,11 +61,11 @@ def profile(request):
         "user_tags": user_tags
     })
 
-@faculty_required
+# @faculty_required
 def faculty(request):
     return render(request, 'dashboard/faculty.html')
 
-@cadet_required
+# @cadet_required
 def cadet(request):
     return render(request, 'dashboard/cadet.html')
 
@@ -109,7 +109,7 @@ def gallery(request):
         return HttpResponse("You are not allowed")
 
     images = Gallery.objects.all().order_by("-id")
-    return render(request, "dashboard/edit_gallery.html",{'images': images})
+    return render(request, "dashboard/manage_gallery.html",{'images': images})
 
 def upload_gallery(request):
     if not user_has_tag(request.user, "gallery_manager"):

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCC Web Portal - Dashboard</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <h2>{{ user.username }}</h2>
+    {% endif%}
+    
+    {% block navbar %}
+        {% include "dashboard/navbar.html" %}
+    {% endblock navbar %}
+    
+    {% block body %}
+    {% endblock body %}
+    
+    {% block footer %}
+    {% endblock footer %}
+
+    
+</body>
+</html>

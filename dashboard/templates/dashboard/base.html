@@ -1,25 +1,81 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NCC Web Portal - Dashboard</title>
+    <title>NCC Unit Dashboard - Vanilla CSS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+    {% block head %}
+    {% endblock head %}
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <h2>{{ user.username }}</h2>
-    {% endif%}
-    
-    {% block navbar %}
-        {% include "dashboard/navbar.html" %}
-    {% endblock navbar %}
-    
-    {% block body %}
-    {% endblock body %}
-    
-    {% block footer %}
-    {% endblock footer %}
 
+    <!-- Sidebar -->
+   <aside id="sidebar">
+
+       <div class="sidebar-header">
+           <div class="logo-box">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield" class="lucide lucide-shield sidebar-logo-icon"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+            </div>
+            <span class="sidebar-title">NCC UNIT</span>
+        </div>
+            
+        <nav id="nav-container" class="nav-container">
+            {% block sidebar %}
+                {% if user.role == "CADET" %}
+                    {% include 'dashboard/sidebar/cadet_sidebar.html' %}
+                {% elif user.role == "FACULTY" %}
+                    {% include 'dashboard/sidebar/faculty_sidebar.html' %}
+                {% endif %}
+            {% endblock sidebar %}
+        </nav>
+                
+                <div class="sidebar-footer">
+                    <button class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out logout-icon"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+            <span class="nav-label">Logout</span>
+        </button>
+    </div>
     
+</aside>
+
+<!-- Main Content Wrapper -->
+<div id="main-wrapper">
+    
+    <header>
+        <div class="header-left">
+            <h1 id="header-title" class="header-title">
+                {% block heading %}
+                    Dashboard
+                {% endblock heading %}
+            </h1>
+        </div>
+        
+            <div class="header-right">
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span id="user-display-name" class="user-name">{{ user.username }}</span>
+                        <span id="user-display-role" class="user-role-label">{{ user.role }}</span>
+                    </div>
+                    <div class="avatar">AV</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- <div class="content-area">   -->
+        <div>  
+            
+            {% block body %}
+            {% endblock body %}
+            
+        </div>
+
+    </div>
+
 </body>
 </html>

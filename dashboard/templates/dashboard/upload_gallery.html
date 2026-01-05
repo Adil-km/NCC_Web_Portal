@@ -1,10 +1,17 @@
-{% extends 'homepage/base.html' %}
+{% extends 'dashboard/base.html' %}
 {% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+{% if edit %}Edit Image{% else %}Upload Image{% endif %}
+{% endblock heading %}
 
 {% block body %}
 <div class="upload-container">
-    <h1>{% if edit %}Edit Image{% else %}Upload Image{% endif %}</h1>
-
+    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 

@@ -1,5 +1,13 @@
 {% extends 'dashboard/base.html' %}
 
 {% block body %}
-    <h1>Dashboard page</h1>
 {% endblock body %}
+
+{% block sidebar %}
+{% if user.role == "CADET" %}
+    {% include 'dashboard/sidebar/cadet_sidebar.html' %}
+{% elif user.role == "FACULTY" %}
+    {% include 'dashboard/sidebar/faculty_sidebar.html' %}
+{% endif %}
+
+{% endblock sidebar %}
