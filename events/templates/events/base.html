@@ -1,0 +1,24 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block body %}
+ <main class="event-page">
+    <div class="breadcrumb">Home / event</div>
+  
+    <div class="event-container">
+      <aside class="sidebar">
+        <button class="active">All events</button>
+        <button>NCC Army Boys</button>
+        <button>NCC Army Girls</button>
+        <button>NCC Army Naval</button>
+      </aside>
+
+      <section class="event-grid">
+        {% block events %}
+        {% endblock events %}
+									
+      </section>
+    </div>
+  </main>
+
+{% endblock body %}

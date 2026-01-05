@@ -4,7 +4,16 @@
 {% block body %}
 
 <section class="gallery-section">
-  <h2>Our Gallery</h2>
+  <!-- <h2>Our Gallery</h2> -->
+
+<div class="gallery-container">
+
+  <aside class="sidebar">
+        <button class="active">All events</button>
+        <button>NCC Army Boys</button>
+        <button>NCC Army Girls</button>
+        <button>NCC Army Naval</button>
+  </aside>
 
   <div class="gallery-grid" id="galleryGrid">
 
@@ -25,6 +34,7 @@
         <p>No images.</p>
         {% endif %}
       </div>
+</div>
         
       <div class="lightbox" id="lightbox">
         <span class="close" onclick="closeLightbox()">×</span>

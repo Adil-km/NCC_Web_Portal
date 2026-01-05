@@ -41,11 +41,13 @@ body{
     background-color: transparent;
     color: var(--white-1);
     padding: 10px 20px;
-    font-size: 0.8rem;
+    font-size: var(--text-1);
     border: none;
     cursor: pointer;
     width: fit-content;
     display: inline-block;
+    align-content: center;
+    min-height: 40px;
 }
 
 .nav-login button::after {
@@ -560,29 +562,29 @@ footer a:hover {
 
 .event-container {
   display: flex;
-  padding: 20px 100px;
+  padding: 20px 50px;
   gap: 30px;
   min-height: 70vh;
 }
 
 .sidebar {
-  padding: 11px 20px 64px;
+    padding: 11px 20px 64px;
     border-radius: 12px;
-    width: 180px;
-  background-color: var(--white-2);
+    width: 300px;
+    background-color: var(--white-2);
 }
 
 .sidebar button {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 10px;
-  margin-bottom: 10px;
-  color: var(--brown);
-  font-weight: bold;
-  cursor: pointer;
+    display: block;
+    width: 75%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 10px;
+    margin-block: 10px;
+    color: var(--brown);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .sidebar .active {
@@ -593,26 +595,33 @@ footer a:hover {
 
 .event-grid {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-content: center;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: stretch;
     gap: 1em;
+    margin-block: 20px;
+    padding-right: 10%;
 }
 
 .event-item {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding-inline: 15px;
+  border-bottom: 2px solid rgb(177, 177, 177);
+  padding: 1em 0;
 }
 
-.event-item img {
-    width: 100%;
-  border-radius: 8px;
-  height: auto;
+.event-date{
+    min-width: 25%;
+    padding: 0 1em ;
 }
 
-.event-item p {
-  margin-top: 10px;
-  font-size: var(--text-1);
-  color: var(--black);
+.event-title,
+.event-title a{
+    min-width: 75%;
+    color: var(--brown);
+    text-decoration: none;
 }
 
 /* Event page end */
@@ -686,6 +695,14 @@ footer a:hover {
 
 
 /* Gallery section start */
+    .gallery-container{
+        display: flex;
+    }
+
+    .gallery-container .sidebar{
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
     .gallery-section {
       padding: 40px;
       text-align: center;
@@ -705,9 +722,10 @@ footer a:hover {
     .gallery-grid {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, 400px);
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         justify-content: center;
         gap: 1em;
+        margin-bottom: 20px;
     }
 
     .gallery-grid img {
@@ -726,6 +744,7 @@ footer a:hover {
     .gallery-item{
         position: relative;
         max-height: 300px;
+        max-width: 400px;
     }
 
     .gallery-item .actions{
@@ -890,6 +909,14 @@ footer a:hover {
         flex: 1 1 120px;
         text-align: center;
         margin: 0;
+    }
+
+    .gallery-container{
+        flex-direction: column;
+    }
+
+    .gallery-grid{
+        justify-items: center;
     }
 
     /* Footer */

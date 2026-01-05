@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'homepage',
     'dashboard',
     'gallery',
+    'events',
 ]
 
 MIDDLEWARE = [
