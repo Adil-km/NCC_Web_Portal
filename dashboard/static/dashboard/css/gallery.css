@@ -39,6 +39,7 @@
     
     .gallery-item{
         position: relative;
+        max-height: 400px;
     }
 
     .gallery-item .actions{

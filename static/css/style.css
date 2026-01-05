@@ -725,6 +725,7 @@ footer a:hover {
     
     .gallery-item{
         position: relative;
+        max-height: 300px;
     }
 
     .gallery-item .actions{
