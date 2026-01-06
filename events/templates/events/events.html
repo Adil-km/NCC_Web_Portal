@@ -10,7 +10,7 @@
     </div>
     
     <div class="event-title">
-      <a href="{{ image.image.url }}">
+      <a href="{% url 'event_detail' image.id %}">
         <p>{{ image.title }}</p>
       </a>
     </div>

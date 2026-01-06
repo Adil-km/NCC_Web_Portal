@@ -2,5 +2,18 @@
 {% load static %}
 
 {% block events %}
-    <p>datails</p>
+
+<div class="event-detail">
+
+    <div class="event-detail-img">
+        <img src="{{ news.image.url }}">
+    </div>
+    
+    <div class="event-detail-body">
+        <h1 class="event-detail-title">{{ news.title }}</h1>
+        <p class="event-detail-date">Reported on: {{ news.date }}</p>
+        <p class="event-detail-content">{{ news.description }}</p>
+    </div>
+    
+</div>
 {% endblock events %}

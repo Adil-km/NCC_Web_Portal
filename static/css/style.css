@@ -24,6 +24,7 @@ body{
     font-family: 'Poppins', sans-serif;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    
 }
 
 /* Drop down button */
@@ -313,6 +314,7 @@ nav a{
 .about-content{
     /* text-align: justify; */
     padding-left: 80px;
+    line-height: 1.6;
 }
 
 .about-content h4{
@@ -622,6 +624,37 @@ footer a:hover {
     min-width: 75%;
     color: var(--brown);
     text-decoration: none;
+}
+
+.event-detail{
+    display: flex;
+    flex-direction: column;
+}
+
+.event-detail-img img{
+    max-width: 100%;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+.event-detail-title{
+    color: var(--brown);
+    font-size: var(--heading-1);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.event-detail-body{
+    font-size: var(--text-1);
+}
+
+.event-detail-date{
+    margin-bottom: 14px;
+}
+
+.event-detail-content{
+    text-align: justify;
+    line-height: 1.6;
 }
 
 /* Event page end */
