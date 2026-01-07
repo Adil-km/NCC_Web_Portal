@@ -2,22 +2,22 @@
 {% load static %}
 
 {% block events %}
-  {% if images %}
-  {% for image in images %}
-  <div class="event-item">
-    <div class="event-date">
-      <p>{{ image.date }}</p>
+  {% if events %}
+    {% for event in events %}
+    <div class="event-item">
+      <div class="event-date">
+        <p>{{ event.date }}</p>
+      </div>
+      
+      <div class="event-title">
+        <a href="{% url 'event_detail' event.id %}">
+          <p>{{ event.title }}</p>
+        </a>
+      </div>
     </div>
-    
-    <div class="event-title">
-      <a href="{% url 'event_detail' image.id %}">
-        <p>{{ image.title }}</p>
-      </a>
-    </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
   {% else %}
-  <p>No images</p>
+  <p>No News & Events</p>
   {% endif %}
 {% endblock events %}
 

@@ -415,36 +415,7 @@
         .status-active { background: #d1fae5; color: #065f46; }
         .status-leave { background: #fef3c7; color: #92400e; }
 
-        /* Event List */
-        .event-item {
-            display: flex;
-            gap: 16px;
-            padding: 16px;
-            border-radius: 16px;
-            transition: background 0.2s;
-            border-left: 4px solid var(--brown);
-            margin-bottom: 12px;
-        }
-
-        .event-item:hover {
-            background-color: var(--white-2);
-        }
-
-        .event-date {
-            background-color: var(--brown);
-            color: var(--white-1);
-            padding: 10px;
-            border-radius: 12px;
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .date-month { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; display: block; }
-        .date-day { font-size: 1.2rem; font-weight: 800; }
-
-        .event-info h4 { font-size: 0.9rem; font-weight: 700; }
-        .event-info p { font-size: 0.75rem; color: var(--brown); font-weight: 600; margin-top: 2px; }
-
+        
         /* Download Grid */
         .download-grid {
             display: grid;

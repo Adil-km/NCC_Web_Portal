@@ -16,7 +16,7 @@ class NewsEventForm(forms.ModelForm):
             'author',
             'visibility',
             'category',
-            'event_date',
+            'date',
         ]
 
         labels = {
@@ -26,7 +26,7 @@ class NewsEventForm(forms.ModelForm):
             'author': 'Author (optional)',
             'visibility': 'Visibility',
             'category': 'Category',
-            'event_date': 'Event Date',
+            'date': 'Event Date',
         }
 
         widgets = {
@@ -42,7 +42,7 @@ class NewsEventForm(forms.ModelForm):
             }),
             'visibility': forms.RadioSelect(),
             'category': forms.Select(),
-            'event_date': forms.DateInput(attrs={
+            'date': forms.DateInput(attrs={
                 'type': 'date'
             }),
         }

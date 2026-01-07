@@ -15,7 +15,6 @@ class NewsEvent(models.Model):  # Renamed to singular (Django convention)
         PRIVATE = 'private', _('Private')
 
     title = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=200, unique=True, blank=True) # Added for SEO-friendly URLs
     content = models.TextField(blank=True)
     author = models.CharField(max_length=100, blank=True)
     
@@ -32,10 +31,10 @@ class NewsEvent(models.Model):  # Renamed to singular (Django convention)
     )
 
     # Specific date for the event/news item
-    event_date = models.DateField() 
+    date = models.DateField() 
 
     image = models.ImageField(
-        upload_to='news_events/%Y/%m/',
+        upload_to='news_events/',
         validators=[FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])],
         null=True,
         blank=True
@@ -47,7 +46,7 @@ class NewsEvent(models.Model):  # Renamed to singular (Django convention)
     class Meta:
         verbose_name = _("News and Event")
         verbose_name_plural = _("News and Events")
-        ordering = ['-event_date', '-created_at']
+        ordering = ['-date', '-created_at']
 
     def __str__(self):
         return f"{self.get_category_display()}: {self.title}"

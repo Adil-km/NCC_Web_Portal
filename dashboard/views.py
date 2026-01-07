@@ -173,7 +173,7 @@ def events(request):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
 
-    events = NewsEvent.objects.all().order_by("-event_date", "-created_at")
+    events = NewsEvent.objects.all().order_by("-date", "-created_at")
 
     return render(
         request,

@@ -1,14 +1,14 @@
 from django.shortcuts import get_object_or_404, render
 
-from gallery.models import Gallery
+from events.models import NewsEvent
 
 # Create your views here.
 
 
 def events(request):
-    images = Gallery.objects.all().order_by("-id")
-    return render(request, "events/events.html",{'images': images})
+    events = NewsEvent.objects.all().order_by("-date", "-created_at")
+    return render(request, "events/events.html",{'events': events})
 
 def event_detail(request,pk):
-    news = get_object_or_404(Gallery, pk=pk)
-    return render(request, 'events/event_detail.html', {"news":news})
+    event = get_object_or_404(NewsEvent, pk=pk)
+    return render(request, 'events/event_detail.html', {"event":event})

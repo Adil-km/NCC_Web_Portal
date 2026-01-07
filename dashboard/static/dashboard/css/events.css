@@ -1,13 +1,12 @@
 
 .event-grid {
-    width: 100%;
     display: flex;
-    justify-content: start;
     flex-direction: column;
-    align-items: stretch;
-    gap: 1em;
-    margin-block: 20px;
-    padding-right: 10%;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .event-item {
@@ -15,19 +14,24 @@
   flex-direction: row;
   padding-inline: 15px;
   border-bottom: 2px solid rgb(177, 177, 177);
-  padding: 1em 0;
+  position: relative;
 }
 
 .event-date{
-    min-width: 25%;
+    min-width: max-content;
     padding: 0 1em ;
+    align-content:center;
 }
 
 .event-title,
 .event-title a{
-    min-width: 75%;
+    max-width: 45vw;
     color: var(--brown);
     text-decoration: none;
+    align-content:center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event-detail{
@@ -60,5 +64,126 @@
     text-align: justify;
     line-height: 1.6;
 }
-
 /* Event page end */
+
+
+.event-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+
+.event-date {
+    min-width: 110px;
+    text-align: center;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.event-title {
+    flex: 1;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.event-title p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.actions form {
+    margin: 0;
+}
+
+/* Shared button styles */
+.actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    padding: 0.45rem 0.75rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* Update button */
+.actions .update {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.actions .update:hover {
+    background: #1d4ed8;
+}
+
+/* Delete button */
+.actions .delete {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.actions .delete:hover {
+    background: #b91c1c;
+}
+
+
+.event-grid > p {
+    text-align: center;
+    color: #777;
+    padding: 2rem 0;
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+    .event-item {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .event-date {
+        width: 100%;
+        text-align: left;
+        font-size: 0.85rem;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .event-item {
+        padding: 0.9rem;
+    }
+
+    .event-title {
+        font-size: 0.95rem;
+    }
+
+    .actions {
+        justify-content: space-between;
+    }
+
+    .actions button span {
+        display: none;
+    }
+}

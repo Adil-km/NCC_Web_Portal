@@ -11,32 +11,47 @@ Manage News & Events
 
 
 {% block body %}
-{% if events %}
+<div class="event-grid">
+
+    {% if events %}
     {% for event in events %}
         <div class="event-item">
 
             <div class="event-date">
-                <p>{{ event.event_date }}</p>
+                <p>{{ event.date }}</p>
             </div>
-
-            <div class="event-title">
+            
+            <a class="event-title" href="{% url 'event_detail' event.id %}">
                 <p>{{ event.title }}</p>
-            </div>
+            </a>
 
-            <div class="event-actions">
-                <a href="{% url 'dashboard_edit_event' event.id %}">Edit</a>
 
-                <form method="post"
-                      action="{% url 'dashboard_delete_event' event.id %}"
-                      style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
+            <div class="actions">
+            <form method="GET" action="{% url 'dashboard_edit_event' event.id %}">
+              <button type="submit"  class="update">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Update</span>
+              </button>
+            </form>
 
-        </div>
+            <form method="POST" action="{% url 'dashboard_delete_event' event.id %}">
+              {% csrf_token %}
+              <button
+                type="submit"
+                class="delete"
+                onclick="return confirm('Are you sure you want to delete this article?')">
+                <i class="fa-solid fa-trash"></i>
+                <span>Delete</span>
+              </button>
+            </form>
+          </div>
+        
+    </div>
     {% endfor %}
-{% else %}
+    {% else %}
     <p>No news or events found.</p>
-{% endif %}
+    {% endif %}
+
+</div>
 {% endblock body %}
+    

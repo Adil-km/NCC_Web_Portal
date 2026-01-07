@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis"></script>
     {% block header %}
        {% endblock header %}
        
@@ -28,6 +29,21 @@
         {% include "homepage/footer.html" %}
     {% endblock footer %}
 
+
+
+        <script>
+const lenis = new Lenis({
+  smoothWheel: true,
+  smoothTouch: false,
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+</script>
 
 </body>
 </html>

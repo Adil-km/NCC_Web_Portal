@@ -631,8 +631,13 @@ footer a:hover {
     flex-direction: column;
 }
 
+.event-detail-img{
+    margin-inline: auto;
+}
+
 .event-detail-img img{
     max-width: 100%;
+    max-height: 300px;
     margin-bottom: 30px;
     border-radius: 4px;
 }

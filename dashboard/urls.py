@@ -20,14 +20,8 @@ urlpatterns = [
 
     # News & Events dashboard
     path('events/', views.events, name='dashboard_events'),
-
-    # Create
     path('events/upload/', views.upload_event, name='dashboard_upload_event'),
-
-    # Edit
     path('events/edit/<int:pk>/', views.edit_event, name='dashboard_edit_event'),
-
-    # Delete
     path('events/delete/<int:pk>/', views.delete_event, name='dashboard_delete_event'),
 
 ]
