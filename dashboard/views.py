@@ -7,6 +7,8 @@ from accounts.models import User, UserTag
 from accounts.utils import user_has_tag, user_tag_codes
 from gallery.forms import UploadImageForm
 from gallery.models import Gallery
+from events.forms import NewsEventForm
+from events.models import NewsEvent
 from .forms import AssignGroupForm, AssignTagsForm, CreateGroupWithPermissionsForm
 from django.contrib.auth.decorators import login_required
 from accounts.decorators import (
@@ -164,3 +166,76 @@ def delete_image(request, pk):
         logger.info(f"Image deleted: {image_obj.image.name}")
         image_obj.delete()
     return redirect("dashboard_gallery")
+
+# Events
+
+def events(request):
+    if not user_has_tag(request.user, "gallery_manager"):
+        return HttpResponse("You are not allowed")
+
+    events = NewsEvent.objects.all().order_by("-event_date", "-created_at")
+
+    return render(
+        request,
+        "dashboard/manage_events.html",
+        {"events": events}
+    )
+
+def upload_event(request):
+    if not user_has_tag(request.user, "gallery_manager"):
+        return HttpResponse("You are not allowed")
+
+    if request.method == "POST":
+        form = NewsEventForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard_events")
+    else:
+        form = NewsEventForm()
+
+    return render(
+        request,
+        "dashboard/upload_events.html",
+        {"form": form}
+    )
+
+def edit_event(request, pk):
+    if not user_has_tag(request.user, "gallery_manager"):
+        return HttpResponse("You are not allowed")
+
+    news_event = get_object_or_404(NewsEvent, pk=pk)
+
+    if request.method == "POST":
+        form = NewsEventForm(
+            request.POST,
+            request.FILES,
+            instance=news_event
+        )
+        if form.is_valid():
+            form.save()
+            logger.info(f"Event updated: {news_event.title}")
+            return redirect("dashboard_events")
+    else:
+        form = NewsEventForm(instance=news_event)
+
+    return render(
+        request,
+        "dashboard/upload_events.html",
+        {
+            "form": form,
+            "edit": True,
+            "news_event": news_event,
+        }
+    )
+
+def delete_event(request, pk):
+    if not user_has_tag(request.user, "gallery_manager"):
+        return HttpResponse("You are not allowed")
+
+    if request.method == "POST":
+        news_event = get_object_or_404(NewsEvent, pk=pk)
+        logger.info(f"Event deleted: {news_event.title}")
+        news_event.delete()
+        return redirect("dashboard_events")
+
+    return HttpResponse("Invalid request method")

@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+Manage News & Events
+{% endblock heading %}
+
+
+{% block body %}
+{% if events %}
+    {% for event in events %}
+        <div class="event-item">
+
+            <div class="event-date">
+                <p>{{ event.event_date }}</p>
+            </div>
+
+            <div class="event-title">
+                <p>{{ event.title }}</p>
+            </div>
+
+            <div class="event-actions">
+                <a href="{% url 'dashboard_edit_event' event.id %}">Edit</a>
+
+                <form method="post"
+                      action="{% url 'dashboard_delete_event' event.id %}"
+                      style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No news or events found.</p>
+{% endif %}
+{% endblock body %}

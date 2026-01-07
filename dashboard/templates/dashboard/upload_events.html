@@ -1,0 +1,81 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+    {% if edit %}Edit Event{% else %}Upload Event{% endif %}
+{% endblock heading %}
+
+{% block body %}
+<div class="upload-container">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <!-- Image -->
+        <div>
+            <label>Image</label>
+            {% if edit and news_event.image %}
+                <img src="{{ news_event.image.url }}" alt="{{ news_event.title }}">
+                {{ form.image.errors }}
+                {{ form.image }}
+            {% else %}
+                {{ form.image.errors }}
+                {{ form.image }}
+            {% endif %}
+        </div>
+
+        <!-- Title -->
+        <div>
+            <label>Title</label>
+            {{ form.title.errors }}
+            {{ form.title }}
+        </div>
+
+        <!-- Content -->
+        <div>
+            <label>Content (optional)</label>
+            {{ form.content.errors }}
+            {{ form.content }}
+        </div>
+
+        <!-- Author -->
+        <div>
+            <label>Author (optional)</label>
+            {{ form.author.errors }}
+            {{ form.author }}
+        </div>
+
+        <!-- Visibility -->
+        <div>
+            <label>Visibility</label>
+            {{ form.visibility.errors }}
+            {{ form.visibility }}
+        </div>
+
+        <!-- Category -->
+        <div>
+            <label>Category</label>
+            {{ form.category.errors }}
+            {{ form.category }}
+        </div>
+
+        <!-- Event Date -->
+        <div>
+            <label>Event Date</label>
+            {{ form.event_date.errors }}
+            {{ form.event_date }}
+        </div>
+
+        <button type="submit">
+            {% if edit %} Update {% else %} Publish {% endif %}
+        </button>
+    </form>
+
+</div>
+{% endblock body %}
