@@ -3,15 +3,16 @@
     <div class="nav-login">
         {% if user.is_authenticated %}
             <a class="nav-login-btn" href="{% url 'dashboard' %}">Dashboard</a>
-            <a class="nav-login-btn" href="{% url 'profile' %}">Profile</a>
+            <!-- <a class="nav-login-btn" href="{% url 'profile' %}">Profile</a> -->
             <a class="nav-login-btn" href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <button class="nav-login-btn">Login</button>
+            {% else %}
+            <a class="nav-login-btn" href="{% url 'login' %}">Login</a>
+            <!-- <button class="nav-login-btn">Login</button>
             <div class="nav-login-content">
                 <a href="{% url 'login' %}">Staff</a>
                 <a href="{% url 'login' %}">Students</a>
                 <a href="{% url 'login' %}">Admin</a>
-            </div>
+            </div> -->
         {% endif%}
     </div>
     
@@ -34,8 +35,8 @@
             <li><a href="{% url 'about' %}">About Us</a></li>
             <li><a href="{% url 'gallery' %}">Gallery</a></li>
             <li><a href="{% url 'events' %}">News & Events</a></li>
-            <li><a href="#">Wings</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'wings' %}">Wings</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
     </div>
     

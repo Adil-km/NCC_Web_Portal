@@ -27,11 +27,12 @@
             
         <nav id="nav-container" class="nav-container">
             {% block sidebar %}
-                {% if user.role == "CADET" %}
+                <!-- {% if user.role == "CADET" %}
                     {% include 'dashboard/sidebar/cadet_sidebar.html' %}
                 {% elif user.role == "FACULTY" %}
                     {% include 'dashboard/sidebar/faculty_sidebar.html' %}
-                {% endif %}
+                    {% endif %} -->
+                    {% include 'dashboard/sidebar/dashboard_sidebar.html' %}
             {% endblock sidebar %}
         </nav>
                 

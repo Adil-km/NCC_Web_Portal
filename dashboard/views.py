@@ -239,3 +239,17 @@ def delete_event(request, pk):
         return redirect("dashboard_events")
 
     return HttpResponse("Invalid request method")
+
+# Download or resource section
+
+def resources(request):
+    return render(request, 'dashboard/resources.html')
+
+
+def upload_resources(request):
+    return render(request, "dashboard/upload_resources.html")
+
+# Notice
+
+def notice(request):
+    return render(request, 'dashboard/notice.html')

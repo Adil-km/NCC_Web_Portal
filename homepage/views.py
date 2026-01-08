@@ -20,8 +20,11 @@ def gallery(request):
 def callToAction(request):
     return render(request, "callToAction.html")
 
+def wings(request):
+    return render(request, "homepage/wings.html")
+
 def contact(request):
-    return render(request, "contact.html")
+    return render(request, "homepage/contact.html")
 
 def events(request):
     return render(request, "homepage/events.html")

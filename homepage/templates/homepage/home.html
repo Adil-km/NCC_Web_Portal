@@ -107,26 +107,32 @@
         </div>
         <div class="about-content">
             <h4>ABOUT US</h4>
-            <p>The National Cadet Corps (NCC) is the youth wing of the Armed Forces of India. At Farook College, our NCC unit plays a vital role in shaping disciplined, responsible, and patriotic citizens. We provide students with opportunities for leadership, community service, physical training, and adventure activities. Our cadets actively participate in various national-level camps, parades, and social initiatives, proudly representing the values of Unity and Discipline. With the guidance of dedicated ANOs and trainers, we aim to build strong character and inspire a spirit of selfless service among youth.Join us, and be a part of a legacy that builds the nation with courage and commitment.</p>
-        </div>
+            <p>
+                The National Cadet Corps (NCC) at Farook College is an active and prestigious co-curricular unit dedicated to developing leadership, discipline, and selfless service among students. The NCC at Farook College consists of three wings - the Army Boys Wing, the Army Girls Wing, and the Naval Wing - with a combined strength of motivated cadets from diverse backgrounds. The programme aims to instill qualities like character, courage, comradeship, and a spirit of adventure through regular drills, community service, adventure training, and participation in national camps and activities. Guided by experienced Associate NCC Officers and trainers, our cadets proudly uphold the values of unity and discipline while preparing for national events and opportunities in defence and public service. By joining NCC, students gain confidence, teamwork skills, and memorable experiences that help them grow into committed and responsible citizens.
+            </p>
+            </div>
     </div>
 </div>
 
 <div class="about-cards">
 
-        <div class="card">
-            <p>500+</p>
-            <p>Dedicated candidates</p>
-        </div>
-        <div class="card">
-            <p>25+</p>
-            <p>Years of excellence</p>
-        </div>
-        <div class="card">
-            <p>10+</p>
-            <p>Camps Annually</p>
-        </div>                
+    <div class="card">
+        <p class="counter" data-target="210">0</p>
+        <p>Total NCC Cadets Active</p>
     </div>
+
+    <div class="card">
+        <p class="counter" data-target="75">0</p>
+        <p>Years of NCC Legacy</p>
+    </div>
+
+    <div class="card">
+        <p class="counter" data-target="8">0</p>
+        <p>Camps Annually (Avg.)</p>
+    </div>                
+
+</div>
+
     
     <div class="cta-container">
         <div class="cta">
@@ -162,5 +168,50 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll(".counter");
+    const DURATION = 2000; // 👈 all counters finish in 2 seconds
+
+    const animateCounter = (counter) => {
+        const target = +counter.dataset.target;
+        const startTime = performance.now();
+
+        const update = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / DURATION, 1);
+            const eased = progress * (2 - progress); // ease-out
+
+
+            const value = Math.floor(eased * target);
+
+            counter.textContent = value;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                counter.textContent = target + "+";
+            }
+        };
+
+        requestAnimationFrame(update);
+    };
+
+    // Animate only when visible
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.6 }
+    );
+
+    counters.forEach(counter => observer.observe(counter));
+});
+</script>
 
 {% endblock body %}

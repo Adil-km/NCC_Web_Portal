@@ -24,4 +24,8 @@ urlpatterns = [
     path('events/edit/<int:pk>/', views.edit_event, name='dashboard_edit_event'),
     path('events/delete/<int:pk>/', views.delete_event, name='dashboard_delete_event'),
 
+    path('resources/', views.resources, name='dashboard_resources'),
+    path('resources/upload/', views.upload_resources, name='dashboard_upload_resources'),
+    
+    path('notice/', views.notice, name='dashboard_notice'),
 ]

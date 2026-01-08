@@ -1,0 +1,90 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Page Header -->
+    <div class="contact-header">
+        <h1>Contact NCC – Farook College</h1>
+        <p>For official communication, training queries, and cadet coordination</p>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+
+            <div class="contact-card">
+                <h3>NCC Unit (Farook College)</h3>
+                <p>
+                    National Cadet Corps (NCC)<br>
+                    Farook College (Autonomous)<br>
+                    Farook College P.O., Kozhikode – 673632, Kerala<br>
+                    📞 +91 495-2440660 / +91 495-2440661<br>
+                    ✉️ mail@farookcollege.ac.in
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Army Wing / ANO (Boys)</h3>
+                <p>
+                    <strong>Capt. Dr. P. Abdul Azees</strong><br>
+                    Associate NCC Officer (Army Boys Wing)<br>
+                    📞 +91 99612-25577<br>
+                    ✉️ abdulazees@farookcollege.ac.in
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Army Girls Wing / ANO</h3>
+                <p>
+                    <strong>Lt. Dr. Sreekala M.S.</strong><br>
+                    Associate NCC Officer (Army Girls Wing)<br>
+                    📞 +91 94970-77177
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Naval Wing / ANO</h3>
+                <p>
+                    <strong>Lt. Dr. A.T. Abdul Jabbar</strong><br>
+                    Associate NCC Officer (Naval Wing)<br>
+                    📞 +91 94008-30133
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <h2>Send a Message</h2>
+
+            <form class="contact-form">
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div>
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="Reason for contacting">
+                </div>
+
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <button type="submit">Submit Message</button>
+            </form>
+        </div>
+
+    </section>
+
+{% endblock body %}
