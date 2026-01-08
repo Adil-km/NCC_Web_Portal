@@ -1,43 +1,50 @@
-{% load static%}
-    <footer>
-        <div class="footer-links">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <img src="{% static 'images/FAROOK_COLLEGE_LOGO.png' %}" alt="College Logo" class="logo-img">
-                    <span>FAROOK COLLEGE AUTONOMOUS</span>
-                </div>
-                <div class="footer-logo">
-                    <img src="{% static 'images/NCC_LOGO.png' %}" alt="College Logo" class="logo-img">
-                    <span>NCC FAROOK COLLEGE</span>
-                </div>
-            </div>
+{% load static %}
+<footer>
+    <div class="footer-links">
 
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#">Enrolment</a>
-                <a href="#">Contact Us</a>
-                <a href="#login">Cadet Login</a>
+        <div class="footer-column">
+            <div class="footer-logo">
+                <img src="{% static 'images/FAROOK_COLLEGE_LOGO.png' %}" alt="Farook College Logo" class="logo-img">
+                <span>FAROOK COLLEGE (AUTONOMOUS)</span>
             </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>Address: Farook College Autonomous,<br>Calicut, Kerala - 673631</p>
-                <p>Phone: <a href="tel::+911234567890">+91 1234567890</a></p>
-                <p>Email: <a href="mailto:info@yournccunit.com">info@yournccunit.com</a></p>
-            </div>
-            <div class="footer-column">
-                <h3>Connect With Us</h3>
-                <a href="#"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
-                <a href="#"><i class="fab fa-youtube"></i><span>YouTube</span></a>
-                <a href="#"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+            <div class="footer-logo">
+                <img src="{% static 'images/NCC_LOGO.png' %}" alt="NCC Logo" class="logo-img">
+                <span>NCC Unit – Farook College</span>
             </div>
         </div>
 
-        <div class="site-footer">
-            <div class="footer-content">
-                <p>&copy; 2025 NCC, Farook College. All rights reserved.</p>
-            </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'wings' %}">Wings</a>
+            <a href="{% url 'contact' %}">Contact Us</a>
+            <a href="{% url 'login' %}">Cadet Login</a>
         </div>
 
-    </footer>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>
+                Farook College (Autonomous),<br>
+                Farook College P.O., Kozhikode<br>
+                Kerala – 673632, India
+            </p>
+            <p>Phone: <a href="tel:+914952440660">+91 495 2440660</a>, <a href="tel:+914952440661">+91 495 2440661</a></p>
+            <p>Email: <a href="mailto:mail@farookcollege.ac.in">mail@farookcollege.ac.in</a></p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Connect With Us</h3>
+            <a href="https://www.facebook.com/farookcollege" target="_blank"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+            <a href="https://www.youtube.com/c/farookcollegeofficial" target="_blank"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+            <a href="https://www.instagram.com/thefarookfeed/" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        </div>
+
+    </div>
+
+    <div class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 National Cadet Corps – Farook College. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
