@@ -6,7 +6,11 @@
 {% endblock head %}
 
 {% block heading %}
-{% if edit %}Edit Image{% else %}Upload Image{% endif %}
+    {% if edit %}
+        Edit Image
+    {% else %}
+        Upload Image
+        {% endif %}
 {% endblock heading %}
 
 {% block body %}

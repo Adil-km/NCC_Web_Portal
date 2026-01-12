@@ -28,4 +28,7 @@ urlpatterns = [
     path('resources/upload/', views.upload_resources, name='dashboard_upload_resources'),
     
     path('notice/', views.notice, name='dashboard_notice'),
+
+    path('attendance/upload/', views.upload_attendance, name='dashboard_upload_attendance'),
+
 ]

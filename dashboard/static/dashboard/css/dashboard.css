@@ -259,6 +259,14 @@
         }
 
         /* --- DASHBOARD CONTENT --- */
+        .dashboard-btn{
+            background-color: var(--brown);
+            text-decoration: none;
+            color: var(--white-1);
+            padding: 10px 30px;
+            border-radius: 5px;
+            margin-left: 30px;
+        }
         .content-area {
             padding: 32px;
             display: flex;

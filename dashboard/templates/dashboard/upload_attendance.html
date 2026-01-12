@@ -1,0 +1,75 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+    Mark Attendance
+{% endblock heading %}
+
+{% block body %}
+<div class="content-area">
+
+    <div id="view-Take-Attendance" class="tab-content active">
+        <div class="card attendance-marking-card">
+            <div class="card-header attendance-header">
+                <h2 class="placeholder-title">Mark Event Attendance</h2>
+                <p class="attendance-subtitle">Weekly Drill Session - 4 Jan 2025</p>
+            </div>
+            <div id="attendance-list" class="attendance-list-container">
+                <div class="attendance-row">
+                    <div class="cadet-profile">
+                        <div class="cadet-avatar">A</div>
+                        <div>
+                            <p class="user-name">Arjun Sharma</p>
+                            <p class="stat-label">C001 • Cadet</p>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
+                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
+                    </div>
+                </div>
+            
+                <div class="attendance-row">
+                    <div class="cadet-profile">
+                        <div class="cadet-avatar">P</div>
+                        <div>
+                            <p class="user-name">Priya Patel</p>
+                            <p class="stat-label">C002 • Cadet Captain</p>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
+                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
+                    </div>
+                </div>
+            
+                <div class="attendance-row">
+                    <div class="cadet-profile">
+                        <div class="cadet-avatar">R</div>
+                        <div>
+                            <p class="user-name">Rohan Verma</p>
+                            <p class="stat-label">C003 • Cadet</p>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
+                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
+                    </div>
+                </div>
+            </div>
+            <button onclick="submitAttendance()" class="submit-btn">FINALIZE ATTENDANCE</button>
+        </div>
+    </div>
+</div>
+<script>
+            function markStatus(btn, status) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.mark-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+</script>
+{% endblock body %}

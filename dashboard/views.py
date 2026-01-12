@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -253,3 +254,8 @@ def upload_resources(request):
 
 def notice(request):
     return render(request, 'dashboard/notice.html')
+
+# Attendance
+
+def upload_attendance(request):
+    return render(request, "dashboard/upload_attendance.html")
