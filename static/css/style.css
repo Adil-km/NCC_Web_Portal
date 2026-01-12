@@ -299,17 +299,23 @@ nav a{
     padding-block: 200px;
 }
 
+.about-img{
+    height: 100%;
+}
 .about-section-div .about{
     display: flex;
     width: 70%;
     height: fit-content;
     font-size: .8rem !important;
+    align-items: center;
 }
 
 .about-section-div .about img{
     width: 400px;
     border-radius: 20px;
 }
+
+
 
 .about-content{
     /* text-align: justify; */
@@ -330,7 +336,7 @@ nav a{
     font-size: var(--text-1);
     font-family: 'Poppins', sans-serif;
     line-height: 24px !important;
-    /* margin-bottom: 25px !important; */
+    margin-bottom: var(--text-1) !important;
 }
 /* about section end */
 
