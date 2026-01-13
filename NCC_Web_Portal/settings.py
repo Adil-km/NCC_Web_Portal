@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'dashboard',
     'gallery',
     'events',
+    'attendance',
 ]
 
 MIDDLEWARE = [
