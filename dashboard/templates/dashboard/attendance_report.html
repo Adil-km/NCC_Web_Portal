@@ -1,0 +1,165 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block heading %}Unit Attendance Report{% endblock heading %}
+
+{% block body %}
+
+<style>
+    .report-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        padding-bottom: 20px;
+    }
+
+    .report-table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* Ensures table doesn't squash too much */
+    }
+    
+    .report-table th, 
+    .report-table td {
+        padding: 16px 20px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .report-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #444;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Column Alignment */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+
+    /* User Profile Column */
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .avatar-circle {
+        width: 32px;
+        height: 32px;
+        background-color: #e9ecef;
+        color: #555;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .user-meta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-name {
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .user-id {
+        font-size: 11px;
+        color: #888;
+    }
+
+    /* Status Colors */
+    .val-present { color: #28a745; font-weight: 600; }
+    .val-absent { color: #dc3545; }
+    
+    /* Percentage Badge Styles */
+    .pct-badge {
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 13px;
+        display: inline-block;
+    }
+
+    .pct-good { background-color: #d4edda; color: #155724; }
+    .pct-avg { background-color: #fff3cd; color: #856404; }
+    .pct-bad { background-color: #f8d7da; color: #721c24; }
+</style>
+
+<div class="content-area">
+    <div class="report-card">
+        <div class="card-header attendance-header">
+            <h2 class="placeholder-title">Cadet Performance Report</h2>
+            <p class="attendance-subtitle">Detailed attendance breakdown by cadet</p>
+        </div>
+
+        <div class="report-table-wrapper">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Cadet</th>
+                        <th class="text-center">Total Events</th>
+                        <th class="text-center">Present</th>
+                        <th class="text-center">Absent</th>
+                        <th class="text-right">Attendance %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cadet in cadets %}
+                    <tr>
+                        <td>
+                            <div class="user-info">
+                                <div class="avatar-circle">
+                                    {{ cadet.username|slice:":1"|upper }}
+                                </div>
+                                <div class="user-meta">
+                                    <span class="user-name">{{ cadet.get_full_name|default:cadet.username }}</span>
+                                    <span class="user-id">ID: {{ cadet.id }}</span>
+                                </div>
+                            </div>
+                        </td>
+                        
+                        <td class="text-center">{{ cadet.total_events }}</td>
+                        
+                        <td class="text-center val-present">
+                            {{ cadet.present_count }}
+                        </td>
+                        
+                        <td class="text-center val-absent">
+                            {{ cadet.absent_count }}
+                        </td>
+                        
+                        <td class="text-right">
+                            <span class="pct-badge 
+                                {% if cadet.percentage >= 75 %}pct-good
+                                {% elif cadet.percentage >= 50 %}pct-avg
+                                {% else %}pct-bad{% endif %}">
+                                {{ cadet.percentage }}%
+                            </span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center" style="padding: 30px; color: #888;">
+                            No attendance data available.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

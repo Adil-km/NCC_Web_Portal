@@ -15,9 +15,11 @@
             <input type="password" name="password" id="password" required>
             {% if messages %}
                 {% for message in messages %}
-                    <div class="error-container">
-                        {{ message }}
-                    </div>
+                    {% if 'error' in message.tags %}
+                        <div class="error-container">
+                            {{ message }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
             <input type="submit" value="Login">

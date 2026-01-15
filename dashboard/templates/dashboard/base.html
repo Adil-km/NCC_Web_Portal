@@ -61,10 +61,10 @@
 
                 <div class="user-profile">
                     <div class="user-info">
-                        <span id="user-display-name" class="user-name">{{ user.username|upper }}</span>
+                        <span id="user-display-name" class="user-name">{{ user.username|title }}</span>
                         <span id="user-display-role" class="user-role-label">{{ user.role|upper }}</span>
                     </div>
-                    <div class="avatar">MB</div>
+                    <div class="avatar">{{ user.username|slice:":1"|upper }}</div>
                 </div>
             </div>
         </header>

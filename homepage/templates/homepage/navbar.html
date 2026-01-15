@@ -2,8 +2,7 @@
 <div class="erp-login">
     <div class="nav-login">
         {% if user.is_authenticated %}
-            <a class="nav-login-btn" href="{% url 'dashboard' %}">Dashboard</a>
-            <!-- <a class="nav-login-btn" href="{% url 'profile' %}">Profile</a> -->
+            <a class="nav-login-btn" href="{% url 'profile' %}">Dashboard</a>
             <a class="nav-login-btn" href="{% url 'logout' %}">Logout</a>
             {% else %}
             <a class="nav-login-btn" href="{% url 'login' %}">Login</a>

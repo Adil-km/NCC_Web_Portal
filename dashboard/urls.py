@@ -4,12 +4,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.dashboard, name="dashboard" ),
+    # path('', views.dashboard, name="dashboard" ),
     path('assign-role/', views.assign_group, name="assign-role" ),
     path('create-group/', views.create_group, name="create-group" ),
     path('cadet/', views.cadet, name="cadet" ),
     path('faculty/', views.faculty, name="faculty" ),
-    path('profile/', views.profile, name="profile" ),
+    # path('profile/', views.profile, name="profile" ),
     path('addtag/', views.addtag, name="addtag" ),
     
     # Gallery Managing
@@ -29,6 +29,10 @@ urlpatterns = [
     
     path('notice/', views.notice, name='dashboard_notice'),
 
-    path('attendance/upload/', views.upload_attendance, name='dashboard_upload_attendance'),
-
+    # path('attendance/upload/', views.upload_attendance, name='dashboard_upload_attendance'),
+    path('attendance/upload/', views.create_attendance, name='dashboard_upload_attendance'),
+    path('attendance/view/', views.view_attendance, name='dashboard_view_attendance'),
+    path('attendance/report/', views.attendance_report, name='attendance_report'),
+    
+    path('', views.profile_view, name="profile" ),
 ]
