@@ -10,7 +10,8 @@ urlpatterns = [
     path('dashboard/', include("dashboard.urls")),
     path('gallery/', include("gallery.urls")),
     path('events/', include("events.urls")),
-    path('attendance/', include("attendance.urls")),
+    # path('attendance/', include("attendance.urls")),
+    # path('notice/', include("notice.urls")),
 ]
 urlpatterns += static(
         settings.MEDIA_URL,

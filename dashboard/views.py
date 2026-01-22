@@ -254,10 +254,6 @@ def resources(request):
 def upload_resources(request):
     return render(request, "dashboard/upload_resources.html")
 
-# Notice
-
-def notice(request):
-    return render(request, 'dashboard/notice.html')
 
 # Attendance
 

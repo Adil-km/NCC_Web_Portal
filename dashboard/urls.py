@@ -1,5 +1,5 @@
 
-from django.urls import path
+from django.urls import include, path
 
 from . import views
 
@@ -27,7 +27,7 @@ urlpatterns = [
     path('resources/', views.resources, name='dashboard_resources'),
     path('resources/upload/', views.upload_resources, name='dashboard_upload_resources'),
     
-    path('notice/', views.notice, name='dashboard_notice'),
+    path('notice/',include("notice.urls") ),
 
     # path('attendance/upload/', views.upload_attendance, name='dashboard_upload_attendance'),
     path('attendance/upload/', views.create_attendance, name='dashboard_upload_attendance'),
@@ -35,4 +35,5 @@ urlpatterns = [
     path('attendance/report/', views.attendance_report, name='attendance_report'),
     
     path('', views.profile_view, name="profile" ),
+
 ]

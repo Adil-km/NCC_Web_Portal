@@ -1,0 +1,45 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+    Add Notice
+{% endblock heading %}
+
+{% block body %}
+<div class="upload-container">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>
+            <label for="{{ form.name.id_for_label }}">Notice Title</label>
+            {{ form.name }}
+        </div>
+
+        <div>
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{ form.description }}
+        </div>
+
+        <div>
+            <label for="{{ form.attachment.id_for_label }}">Attach File</label>
+            {{ form.attachment }}
+        </div>
+
+        <div>
+            <label for="{{ form.date.id_for_label }}">Date</label>
+            {{ form.date }}
+        </div>
+
+        <button type="submit">
+            Add Notice
+        </button>
+
+    </form>
+
+</div>
+{% endblock body %}
