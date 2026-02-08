@@ -226,6 +226,7 @@
             </ul>
         </div>
 
+        {% if not profile_user.username == "teacher" %}
         <!-- Right Card -->
         <div class="profile-card">
             <h3 class="section-title">Performance Overview</h3>
@@ -283,7 +284,7 @@
                 <p class="empty-state">No recent activity found.</p>
             {% endif %}
         </div>
-
+        {% endif %}
     </div>
 </div>
 {% endblock body %}
