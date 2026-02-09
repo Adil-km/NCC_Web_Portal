@@ -1,346 +1,178 @@
-.profile-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    min-height: 70vh;
-    padding: 50px 30px;
-}
-
-/* --- PROFILE HEADER --- */
-.profile-header {
-    background-color: var(--white-1);
-    border-radius: 20px;
-    padding: 32px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    box-shadow: var(--shadow);
-    flex-wrap: wrap;
-}
-
-.avatar-wrapper {
-    position: relative;
-}
-
-.avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 4px solid var(--brown);
-    object-fit: cover;
-    background-color: var(--gray-subtle);
-}
-
-.status-indicator {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    background-color: #22c55e;
-    border: 3px solid var(--white-1);
-    border-radius: 50%;
-}
-
-.header-info {
-    flex: 1;
-    min-width: 250px;
-}
-
-.name-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 4px;
-}
-
-.user-name {
-    font-size: var(--heading-1);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-}
-
-.badge {
-    background-color: var(--brown);
-    color: var(--white-1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.reg-no {
-    color: var(--brown);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-}
-
-.meta-info {
-    display: flex;
-    gap: 20px;
-    font-size: 0.9rem;
-    color: #555;
-    flex-wrap: wrap;
-}
-
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.header-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* --- BUTTONS --- */
-.btn {
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-    font-size: 0.9rem;
-    border: none;
-    white-space: nowrap;
-}
-
-.btn-primary {
-    background-color: var(--brown);
-    color: var(--white-1);
-}
-
-.btn-primary:hover {
-    background-color: var(--brown-dark);
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid var(--brown);
-    color: var(--brown);
-}
-
-.btn-outline:hover {
-    background-color: var(--white-2);
-}
-
-/* --- MAIN CONTENT GRID --- */
-.content-grid {
+/* ------------ */
+/* profile.html */
+/* ------------ */
+.profile-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 2fr;
     gap: 24px;
-}
-
-.main-col {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    align-items: start;
 }
 
 .profile-card {
-    background-color: var(--white-1);
-    border-radius: 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 24px;
-    box-shadow: var(--shadow);
+    border: 1px solid #eee;
 }
 
-.card-title {
-    font-size: var(--heading-2);
-    color: var(--brown-dark);
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--white-2);
-    padding-bottom: 10px;
+.identity-header {
+    text-align: center;
+    margin-bottom: 24px;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+.large-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #e9ecef;
+    color: #495057;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    border: 4px solid white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.info-item label {
-    display: block;
-    font-size: 0.75rem;
+.profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    color: #666;
+    font-size: 14px;
     text-transform: uppercase;
-    font-weight: 800;
-    opacity: 0.6;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    letter-spacing: 0.5px;
 }
 
-.info-item .value {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.info-item li.value{
-    margin-left: 20px;
-}
-
-/* --- SIDEBAR COMPONENTS --- */
-.profile-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* Attendance Widget (Based on provided component) */
-.attendance-card {
-    background-color: var(--brown);
-    color: var(--white-1);
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(152, 43, 53, 0.2);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.attendance-card .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.attendance-card .percentage {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1;
-}
-
-.progress-container {
-    width: 100%;
-    height: 8px;
-    background-color: var(--brown-dark);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: var(--white-1);
-    width: 88%;
-    transition: width 1s ease;
-}
-
-.disclaimer {
-    font-size: 0.75rem;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-/* Training Materials List */
-.materials-list {
+.info-list {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.material-item {
+.info-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid var(--white-2);
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
 }
 
-.material-item:last-child {
+.info-item:last-child {
     border-bottom: none;
 }
 
-.material-name {
-    font-size: 0.9rem;
+.info-label { color: #888; }
+.info-val { font-weight: 500; color: #333; }
+.info-val-active { color: green; }
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.subsection-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.mini-stat-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+}
+
+.mini-stat-val {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.mini-stat-val-success {
+    color: #28a745;
+}
+
+.mini-stat-lbl {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.activity-table th {
+    text-align: left;
+    color: #888;
+    font-size: 12px;
     font-weight: 600;
+    padding-bottom: 10px;
 }
 
-.download-icon {
-    color: var(--brown);
-    cursor: pointer;
+.activity-table td {
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
 }
 
-/* Icons (Internal SVG sizing) */
-svg.icon {
-    width: 16px;
-    height: 16px;
+.activity-table tr:last-child td {
+    border-bottom: none;
 }
 
-.watermark {
-    position: absolute;
-    bottom: -30px;
-    right: -30px;
-    width: 150px;
-    height: 150px;
-    opacity: 0.08;
-    transform: rotate(15deg);
-    pointer-events: none;
+.activity-type {
+    color: #888;
+    font-size: 12px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .content-grid {
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.st-present {
+    background: #d4edda;
+    color: #155724;
+}
+
+.st-absent {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.empty-state {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .profile-grid {
         grid-template-columns: 1fr;
     }
-    .profile-header {
-        justify-content: center;
-        text-align: center;
-    }
-    .name-row {
-        justify-content: center;
-    }
-    .meta-info {
-        justify-content: center;
-    }
-    .header-actions {
-        width: 100%;
-    }
-}
-
-/* Attendance label */
-.attendance-label {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-/* Attendance percentage row */
-.attendance-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.attendance-total {
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-/* Light button variant */
-.btn-light {
-    background-color: var(--white-1);
-    color: var(--brown);
-    margin-top: 8px;
-}
-
-/* Materials section title */
-.materials-title {
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Brown icons */
-.icon-brown {
-    color: var(--brown);
 }

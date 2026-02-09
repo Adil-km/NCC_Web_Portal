@@ -53,7 +53,7 @@ def addtag(request):
     else:
         form = AssignTagsForm(selected_user=selected_user)
 
-    return render(request, 'dashboard/addtag.html', {
+    return render(request, 'dashboard/manage_role.html', {
         'form': form,
         'selected_user': selected_user
     })
@@ -293,7 +293,7 @@ def create_attendance(request):
     else:
         form = ActivityForm()
 
-    return render(request, 'dashboard/take_attendance_fresh.html', {
+    return render(request, 'dashboard/upload_attendance.html', {
         'form': form,
         'cadets': cadets
     })

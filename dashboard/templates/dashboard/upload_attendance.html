@@ -2,74 +2,103 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/attendance.css'%}">
 {% endblock head %}
 
-{% block heading %}
-    Mark Attendance
-{% endblock heading %}
+{% block heading %}New Activity & Attendance{% endblock heading %}
 
 {% block body %}
-<div class="content-area">
+<style>
+    /* Basic Layout for the Activity Form Section */
 
-    <div id="view-Take-Attendance" class="tab-content active">
-        <div class="card attendance-marking-card">
-            <div class="card-header attendance-header">
-                <h2 class="placeholder-title">Mark Event Attendance</h2>
-                <p class="attendance-subtitle">Weekly Drill Session - 4 Jan 2025</p>
-            </div>
-            <div id="attendance-list" class="attendance-list-container">
-                <div class="attendance-row">
-                    <div class="cadet-profile">
-                        <div class="cadet-avatar">A</div>
-                        <div>
-                            <p class="user-name">Arjun Sharma</p>
-                            <p class="stat-label">C001 • Cadet</p>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
-                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
+</style>
+
+<div class="content-area">
+    <div class="card attendance-marking-card">
+        <form method="POST">
+
+            {% csrf_token %}
+            <div class="activity-form-section">
+                <h3 class="section-title">1. Event Details</h3>
+                <div class="form-group">
+                    <label class="form-label">Activity Name</label>
+                    {{ form.name }}
+                </div>
+
+                <div class="two-column-grid">
+                    <div class="form-group">
+                        <label class="form-label">Type</label>
+                        {{ form.activity_type }}
                     </div>
                 </div>
-            
-                <div class="attendance-row">
-                    <div class="cadet-profile">
-                        <div class="cadet-avatar">P</div>
-                        <div>
-                            <p class="user-name">Priya Patel</p>
-                            <p class="stat-label">C002 • Cadet Captain</p>
-                        </div>
+
+                <div class="two-column-grid">
+                    <div class="form-group">
+                        <label class="form-label">Start Date</label>
+                        {{ form.start_date }}
                     </div>
-                    <div class="btn-group">
-                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
-                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
+                    <div class="form-group">
+                        <label class="form-label">End Date</label>
+                        {{ form.end_date }}
                     </div>
                 </div>
-            
-                <div class="attendance-row">
-                    <div class="cadet-profile">
-                        <div class="cadet-avatar">R</div>
-                        <div>
-                            <p class="user-name">Rohan Verma</p>
-                            <p class="stat-label">C003 • Cadet</p>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button onclick="markStatus(this, 'present')" class="mark-btn present">Present</button>
-                        <button onclick="markStatus(this, 'absent')" class="mark-btn absent">Absent</button>
-                    </div>
+
+                <div class="form-group">
+                    <label class="form-label">Location</label>
+                    <input type="text" name="location" class="form-control" required>
                 </div>
             </div>
-            <button onclick="submitAttendance()" class="submit-btn">FINALIZE ATTENDANCE</button>
-        </div>
+
+            <div class="attendance-header">
+                <h3 class="attendance-header-title">2. Mark Cadets</h3>
+                <p class="attendance-subtitle">Select status for each cadet below</p>
+            </div>
+
+            <div class="attendance-list-container">
+                {% for cadet in cadets %}
+                <div class="attendance-row">
+                    <div class="cadet-profile">
+                        <div class="cadet-avatar">
+                            {{ cadet.username|slice:":1"|upper }}
+                        </div>
+                        <div>
+                            <p class="user-name">
+                                {{ cadet.get_full_name|default:cadet.username }}
+                            </p>
+                            <p class="stat-label">ID: {{ cadet.id }}</p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <input type="radio" 
+                               name="status_{{ cadet.id }}" 
+                               value="PRESENT" 
+                               id="present_{{ cadet.id }}" 
+                               class="status-radio">
+                        <label for="present_{{ cadet.id }}" class="mark-btn present-lbl">
+                            Present
+                        </label>
+
+                        <input type="radio" 
+                               name="status_{{ cadet.id }}" 
+                               value="ABSENT" 
+                               id="absent_{{ cadet.id }}" 
+                               class="status-radio" 
+                               checked> 
+                        <label for="absent_{{ cadet.id }}" class="mark-btn absent-lbl">
+                            Absent
+                        </label>
+                    </div>
+                </div>
+                {% empty %}
+                    <p>No cadets found.</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="submit-btn">
+                CREATE & SAVE ATTENDANCE
+            </button>
+        </form>
     </div>
 </div>
-<script>
-            function markStatus(btn, status) {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.mark-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-</script>
 {% endblock body %}

@@ -2,27 +2,7 @@
 {% load static %}
 
 {% block head %}
-<style>
-    .card {
-        margin: 10px;
-    }
-    .notice-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .download-btn {
-        padding: 6px 12px;
-        background-color: #2563eb;
-        color: white;
-        border-radius: 6px;
-        font-size: 13px;
-        text-decoration: none;
-    }
-    .download-btn:hover {
-        background-color: #1d4ed8;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'dashboard/css/notice.css' %}">
 {% endblock head %}
 
 {% block heading %}
@@ -38,7 +18,7 @@
         {% for notice in notices %}
         <div class="notice-item">
 
-            <div style="display:flex; gap:15px; align-items:center;">
+            <div class="notice-left">
                 <div class="notice-icon">
                     <!-- Bell Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
@@ -55,13 +35,11 @@
                 </div>
             </div>
 
-            <div style="display:flex; gap:12px; align-items:center;">
-                <!-- Date Bubble -->
+            <div class="notice-right">
                 <span class="notice-tag info">
                     {{ notice.date|date:"d M Y" }}
                 </span>
 
-                <!-- Download Button -->
                 {% if notice.attachment %}
                 <a href="{{ notice.attachment.url }}" download class="download-btn">
                     Download
@@ -71,7 +49,7 @@
 
         </div>
         {% empty %}
-        <p style="padding: 10px;">No notices available.</p>
+        <p class="notice-empty">No notices available.</p>
         {% endfor %}
 
     </div>
