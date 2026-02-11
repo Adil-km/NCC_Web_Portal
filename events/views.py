@@ -9,6 +9,16 @@ def events(request):
     events = NewsEvent.objects.all().order_by("-date", "-created_at")
     return render(request, "events/events.html",{'events': events})
 
-def event_detail(request,pk):
+def event_detail(request, pk):
     event = get_object_or_404(NewsEvent, pk=pk)
-    return render(request, 'events/event_detail.html', {"event":event})
+
+    content_list = [
+        item.strip()
+        for item in event.content.split("<br>")
+        if item.strip()
+    ]
+
+    return render(request, 'events/event_detail.html', {
+        "event": event,
+        "content_list": content_list
+    })
