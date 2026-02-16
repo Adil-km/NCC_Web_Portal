@@ -399,8 +399,6 @@ def homepage(request):
     context = {
         'slider_images': Homepage.objects.filter(section='slider'),
         'about_images': Homepage.objects.filter(section='about'),
-        'achievement_images': Homepage.objects.filter(section='achievement'),
-        'gallery_images': Homepage.objects.filter(section='gallery'),
     }
 
     return render(request, 'dashboard/homepage.html', context)
