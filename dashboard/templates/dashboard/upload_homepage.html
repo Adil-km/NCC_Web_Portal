@@ -1,0 +1,52 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+    {% if edit %}
+        Edit Homepage Image
+    {% else %}
+        Upload Homepage Image
+    {% endif %}
+{% endblock heading %}
+
+{% block body %}
+<div class="upload-container">
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <!-- Section -->
+        <div>
+            <label>Section</label>
+            {{ form.section.errors }}
+            {{ form.section }}
+        </div>
+
+        <!-- Image -->
+        <div>
+            <label>Image</label>
+            {% if edit %}
+                {% if image_obj.image %}
+                    <img src="{{ image_obj.image.url }}" 
+                         alt="{{ image_obj.section }}" 
+                         width="200">
+                {% endif %}
+            {% endif %}
+            
+            {{ form.image.errors }}
+            {{ form.image }}
+        </div>
+
+        <button type="submit">
+            {% if edit %} Update {% else %} Upload {% endif %}
+        </button>
+    </form>
+
+</div>
+{% endblock body %}

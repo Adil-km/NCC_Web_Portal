@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from .models import Homepage
 # Create your views here.
 
 def home(request):
+    images = Homepage.objects.all()
+    print(images)
     return render(request, "homepage/home.html")
 
 def about(request):

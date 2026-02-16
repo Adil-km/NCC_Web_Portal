@@ -57,10 +57,10 @@ class UploadImageForm(forms.ModelForm):
         image = self.cleaned_data.get('image')
 
         if image:
-            ext = image.name.split('.')[-1].lower()
+            ext = image.name.rsplit('.', 1)[-1].lower()
             if ext not in ALLOWED_EXTENSIONS:
                 raise ValidationError(
-                    "Only PNG and JPEG images are allowed."
+                    "Only PNG, JPG, and JPEG files are allowed."
                 )
 
         return image

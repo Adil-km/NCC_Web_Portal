@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- <link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}"> -->
+    {% endblock head %}
+
+{% block heading %}
+Manage Gallery
+<a href="{% url 'upload_homepage' %}" class="dashboard-btn">Upload Homepage Images</a>
+{% endblock heading %}
+
+
+{% block body %}
+
+<h2>Slider</h2>
+{% for image in slider_images %}
+    <img src="{{ image.image.url }}" width="200">
+{% empty %}
+    <p>No slider images.</p>
+{% endfor %}
+
+
+<h2>About</h2>
+{% for image in about_images %}
+    <img src="{{ image.image.url }}" width="200">
+{% empty %}
+    <p>No about images.</p>
+{% endfor %}
+
+
+{% endblock body %}

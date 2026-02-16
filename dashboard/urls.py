@@ -18,6 +18,10 @@ urlpatterns = [
     path("gallery/edit/<int:pk>/", views.edit_image, name="edit_image"),
     path("gallery/delete/<int:pk>/", views.delete_image, name="delete_image"),
 
+    # Homepage
+    path('homepage/', views.homepage, name="homepage" ),
+    path('homepage/upload/', views.upload_homepage, name="upload_homepage" ),
+    
     # News & Events dashboard
     path('events/', views.events, name='dashboard_events'),
     path('events/upload/', views.upload_event, name='dashboard_upload_event'),

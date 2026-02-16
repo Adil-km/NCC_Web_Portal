@@ -13,6 +13,8 @@ from gallery.forms import UploadImageForm
 from gallery.models import Gallery
 from events.forms import NewsEventForm
 from events.models import NewsEvent
+from homepage.forms import UploadHomePageForm
+from homepage.models import Homepage
 from .forms import AssignGroupForm, AssignTagsForm, CreateGroupWithPermissionsForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Count, Q
@@ -390,3 +392,69 @@ def profile_view(request):
     }
     
     return render(request, 'dashboard/profile.html', context)
+
+
+#  homepage
+def homepage(request):
+    context = {
+        'slider_images': Homepage.objects.filter(section='slider'),
+        'about_images': Homepage.objects.filter(section='about'),
+        'achievement_images': Homepage.objects.filter(section='achievement'),
+        'gallery_images': Homepage.objects.filter(section='gallery'),
+    }
+
+    return render(request, 'dashboard/homepage.html', context)
+
+def upload_homepage(request):
+    # if not user_has_tag(request.user, "gallery_manager"):
+    #     return HttpResponse("You are not allowed")
+    
+    if request.method == 'POST':
+        form = UploadHomePageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard_gallery')
+    else:
+        form = UploadHomePageForm()
+
+    return render(
+        request,
+        'dashboard/upload_homepage.html',
+        {'form': form}
+    )
+
+# def edit_image(request, pk):
+#     if not user_has_tag(request.user, "gallery_manager"):
+#         return HttpResponse("You are not allowed")
+    
+#     image_obj = get_object_or_404(Gallery, pk=pk)
+#     filename = image_obj.image.name.split('/')[1]
+#     if request.method == "POST":
+#         form = UploadImageForm(request.POST, request.FILES, instance=image_obj)
+#         if form.is_valid():
+#             form.save()
+#             logger.info(f"Image updated: {image_obj.image.name}")
+#             return redirect("dashboard_gallery")
+#     else:
+#         form = UploadImageForm(instance=image_obj)
+
+#     return render(
+#         request,
+#         "dashboard/upload_gallery.html",
+#         {
+#             "form": form,
+#             "edit": True,
+#             "image_obj": image_obj,
+#             "filename":filename
+#         }
+#     )
+
+# def delete_image(request, pk):
+#     if not user_has_tag(request.user, "gallery_manager"):
+#         return HttpResponse("You are not allowed")
+    
+#     if request.method == "POST":
+#         image_obj = get_object_or_404(Gallery, pk=pk)
+#         logger.info(f"Image deleted: {image_obj.image.name}")
+#         image_obj.delete()
+#     return redirect("dashboard_gallery")
