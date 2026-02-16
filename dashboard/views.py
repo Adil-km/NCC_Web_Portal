@@ -411,7 +411,7 @@ def upload_homepage(request):
         form = UploadHomePageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('dashboard_gallery')
+            return redirect('homepage')
     else:
         form = UploadHomePageForm()
 
@@ -421,38 +421,12 @@ def upload_homepage(request):
         {'form': form}
     )
 
-# def edit_image(request, pk):
-#     if not user_has_tag(request.user, "gallery_manager"):
-#         return HttpResponse("You are not allowed")
+def delete_homepage_image(request, pk):
+    # if not user_has_tag(request.user, "gallery_manager"):
+    #     return HttpResponse("You are not allowed")
     
-#     image_obj = get_object_or_404(Gallery, pk=pk)
-#     filename = image_obj.image.name.split('/')[1]
-#     if request.method == "POST":
-#         form = UploadImageForm(request.POST, request.FILES, instance=image_obj)
-#         if form.is_valid():
-#             form.save()
-#             logger.info(f"Image updated: {image_obj.image.name}")
-#             return redirect("dashboard_gallery")
-#     else:
-#         form = UploadImageForm(instance=image_obj)
-
-#     return render(
-#         request,
-#         "dashboard/upload_gallery.html",
-#         {
-#             "form": form,
-#             "edit": True,
-#             "image_obj": image_obj,
-#             "filename":filename
-#         }
-#     )
-
-# def delete_image(request, pk):
-#     if not user_has_tag(request.user, "gallery_manager"):
-#         return HttpResponse("You are not allowed")
-    
-#     if request.method == "POST":
-#         image_obj = get_object_or_404(Gallery, pk=pk)
-#         logger.info(f"Image deleted: {image_obj.image.name}")
-#         image_obj.delete()
-#     return redirect("dashboard_gallery")
+    if request.method == "POST":
+        image_obj = get_object_or_404(Homepage, pk=pk)
+        logger.info(f"Image deleted: {image_obj.image.name}")
+        image_obj.delete()
+    return redirect("homepage")
