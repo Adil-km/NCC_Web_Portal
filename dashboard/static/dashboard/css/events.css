@@ -11,6 +11,28 @@
     padding: 1rem;
 }
 
+.event-grid .add-btn{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: nowrap;
+    padding-inline: 60px;
+    background-color: #1d4ed8;
+    color: white;
+
+    text-decoration: none;
+    align-content:center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* .add-btn .event-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} */
+
 .event-item {
   display: flex;
   flex-direction: row;
@@ -159,6 +181,10 @@
         gap: 0.75rem;
     }
 
+    .event-grid .add-btn{
+        align-self: normal;
+        align-items: center;
+    }
     .event-date {
         width: 100%;
         text-align: left;
