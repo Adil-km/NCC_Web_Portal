@@ -569,19 +569,23 @@ footer a:hover {
 
 /* Event page start */
 .breadcrumb {
-  padding: 15px 30px;
-  font-size: 14px;
-  color: var(--brown);
-  margin-top: 30px;
-  margin-left: 70px;
-  font-weight: bold;
+    padding: 15px 30px;
+    font-size: 14px;
+    color: var(--brown);
+    margin-top: 30px;
+    margin-left: 70px;
+    font-weight: bold;
+}
+.breadcrumb a{
+    text-decoration: none;
+    color: var(--brown);
 }
 
 .event-container {
-  display: flex;
-  padding: 20px 50px;
-  gap: 30px;
-  min-height: 70vh;
+    display: flex;
+    padding: 20px 50px;
+    gap: 30px;
+    min-height: 70vh;
 }
 
 .sidebar {

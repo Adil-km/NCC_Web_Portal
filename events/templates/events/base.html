@@ -3,14 +3,45 @@
 
 {% block body %}
  <main class="event-page">
-    <div class="breadcrumb">Home / event</div>
+    <div class="breadcrumb"><a 
+        href="{% url 'home' %}"
+        >Home</a>
+      {% if request.resolver_match.url_name == 'events' %}
+        /<a 
+        href="{% url 'events' %}"
+        > All News & Events</a>
+      {% elif request.resolver_match.url_name == 'news_events' %}
+        /<a 
+        href="{% url 'news_events' %}"
+        > News</a>
+      {% elif request.resolver_match.url_name == 'event_events' %}
+        /<a 
+        href="{% url 'event_events' %}"
+        > Events</a>
+      {% elif request.resolver_match.url_name == 'achievement_events' %}
+        /<a 
+        href="{% url 'achievement_events' %}"
+        > Achievement</a>
+      {% endif %}</div>
   
     <div class="event-container">
       <aside class="sidebar">
-        <button class="active">All events</button>
-        <button>NCC Army Boys</button>
-        <button>NCC Army Girls</button>
-        <button>NCC Army Naval</button>
+        <a 
+        href="{% url 'events' %}"
+        class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}"
+        >All News & Events</a>
+        <a 
+        href="{% url 'news_events' %}"
+        class="{% if request.resolver_match.url_name == 'news_events' %}active{% endif %}"
+        >News</a>
+        <a 
+        href="{% url 'event_events' %}"
+        class="{% if request.resolver_match.url_name == 'event_events' %}active{% endif %}"
+        >Events</a>
+        <a 
+        href="{% url 'achievement_events' %}"
+        class="{% if request.resolver_match.url_name == 'achievement_events' %}active{% endif %}"
+        >Achievement</a>
       </aside>
 
       <section class="event-grid">

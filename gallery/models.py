@@ -6,7 +6,7 @@ class Gallery(models.Model):
 
     # CATEGORY CHOICES
     CATEGORY_CHOICES = [
-        ('all', 'All'),
+        ('general', 'General'),
         ('boys', 'NCC Army Boys'),
         ('girls', 'NCC Army Girls'),
         ('naval', 'NCC Army Naval'),
@@ -29,7 +29,7 @@ class Gallery(models.Model):
     category = models.CharField(
         max_length=20,
         choices=CATEGORY_CHOICES,
-        default='all'
+        default='general'
     )
 
     date = models.DateField(default=timezone.now)
