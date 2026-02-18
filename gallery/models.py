@@ -9,7 +9,7 @@ class Gallery(models.Model):
         ('general', 'General'),
         ('boys', 'NCC Army Boys'),
         ('girls', 'NCC Army Girls'),
-        ('naval', 'NCC Army Naval'),
+        ('naval', 'NCC Naval'),
     ]
 
     # VISIBILITY CHOICES

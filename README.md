@@ -7,19 +7,14 @@ from your_app_name.models import UserTag
 
 tags = [
     {
-        "name": "Achievements Manager",
-        "code": "achievements_manager",
-        "description": "Can add and update NCC achievements displayed on the public website."
+        "name": "Website Manager",
+        "code": "website_manager",
+        "description": "Can add and update images displayed on the public website (eg. slider images, about section image, etc.)."
     },
     {
         "name": "Attendance Marker",
         "code": "attendance_marker",
         "description": "Can mark attendance for assigned cadets during NCC events."
-    },
-    {
-        "name": "Attendance Viewer",
-        "code": "attendance_viewer",
-        "description": "Can view and download attendance reports beyond assigned cadets."
     },
     {
         "name": "Downloads Manager",

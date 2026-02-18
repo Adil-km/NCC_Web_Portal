@@ -1,14 +1,16 @@
+from unicodedata import category
 from django.shortcuts import render
 from .models import Homepage
 # Create your views here.
 
 def home(request):
-    images = Homepage.objects.all()
-    print(images)
-    return render(request, "homepage/home.html")
+    slider = Homepage.objects.all().filter(section="slider")
+    about = Homepage.objects.get(section="about")
+    return render(request, "homepage/home.html", {"slider":slider, "about":about})
 
 def about(request):
-    return render(request, "homepage/about.html")
+    about = Homepage.objects.get(section="about")
+    return render(request, "homepage/about.html", {"about":about})
 
 def achievements(request):
     return render(request, "achievements.html")

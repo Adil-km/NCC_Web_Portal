@@ -17,6 +17,17 @@
 <div class="slideshow">
 
     <div class="slideshow-container">
+        {% if slider %}
+
+            {% for image in slider%}
+            <div class="mySlides fade">
+                <img src="{{image.image.url}}" alt="NCC Girls Parade" class="slide-img">
+                <!-- <div class="caption">Unity and Discipline in Action</div> -->
+            </div>
+            {% endfor%}
+
+        {% else %}
+
         <div class="mySlides fade">
             <img src="{%static 'homepage/images/nccall.jpeg' %}" alt="NCC Girls Parade" class="slide-img">
             <div class="caption">Unity and Discipline in Action</div>
@@ -25,28 +36,27 @@
             <img src="{%static 'homepage/images/nccboys.jpeg' %}" alt="NCC Girls Parade" class="slide-img">
             <div class="caption">Unity and Discipline in Action</div>
         </div>
-        
         <div class="mySlides fade">
             <img src="{%static 'homepage/images/nccgirls.jpeg' %}" alt="All Wings Together" class="slide-img">
             <div class="caption">Proud to Serve, Together</div>
         </div>
-        
         <div class="mySlides fade">
             <img src="{%static 'homepage/images/nccnaval.jpg' %}" alt="Naval Cadets" class="slide-img">
             <div class="caption">Bravery on Land and Sea</div>
         </div>
+        {% endif%}
         
         <!-- Prev and Next buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
         
         <!-- Dots -->
-        <div class="dot-btn">
+        <!-- <div class="dot-btn">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
             <span class="dot" onclick="currentSlide(4)"></span>
-        </div>
+        </div> -->
         
     </div>
 
@@ -103,7 +113,11 @@
 
     <div class="about">
         <div class="about-img">
+            {% if about %}
+            <img src="{{about.image.url}}" alt="About">
+            {% else %}
             <img src="{% static 'homepage/images/about.png' %}" alt="About">
+            {% endif %}
         </div>
         <div class="about-content">
             <h4>ABOUT US</h4>

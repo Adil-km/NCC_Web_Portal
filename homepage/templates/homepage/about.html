@@ -7,7 +7,11 @@
 
     <div class="about">
         <div class="about-img">
+            {% if about %}
+            <img src="{{about.image.url}}" alt="About">
+            {% else %}
             <img src="{% static 'homepage/images/about.png' %}" alt="About">
+            {% endif %}
         </div>
         <div class="about-content">
             <h4>ABOUT US</h4>
