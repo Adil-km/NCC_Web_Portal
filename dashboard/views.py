@@ -189,7 +189,7 @@ def events(request):
     )
 
 def upload_event(request):
-    if not user_has_tag(request.user, "gallery_manager"):
+    if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
 
     if request.method == "POST":
@@ -207,7 +207,7 @@ def upload_event(request):
     )
 
 def edit_event(request, pk):
-    if not user_has_tag(request.user, "gallery_manager"):
+    if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
 
     news_event = get_object_or_404(NewsEvent, pk=pk)
@@ -236,7 +236,7 @@ def edit_event(request, pk):
     )
 
 def delete_event(request, pk):
-    if not user_has_tag(request.user, "gallery_manager"):
+    if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
 
     if request.method == "POST":
@@ -264,7 +264,7 @@ def upload_attendance(request):
 
 def create_attendance(request):
     # Get all cadets (customize filter as needed, e.g., is_staff=False)
-    cadets = User.objects.all().order_by('username')
+    cadets = User.objects.all().order_by('username').filter(role="CADET")
 
     if request.method == 'POST':
         form = ActivityForm(request.POST)
@@ -343,7 +343,7 @@ def attendance_report(request):
         total_events=Count('attendance'),
         present_count=Count('attendance', filter=Q(attendance__status='PRESENT')),
         absent_count=Count('attendance', filter=Q(attendance__status='ABSENT'))
-    ).order_by('username')
+    ).order_by('username').filter(role="CADET")
 
     # Calculate percentage in Python to avoid complex database math
     for cadet in cadets:

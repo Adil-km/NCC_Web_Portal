@@ -5,11 +5,11 @@ from .models import Homepage
 
 def home(request):
     slider = Homepage.objects.all().filter(section="slider")
-    about = Homepage.objects.get(section="about")
+    about = Homepage.objects.filter(section="about").first()
     return render(request, "homepage/home.html", {"slider":slider, "about":about})
 
 def about(request):
-    about = Homepage.objects.get(section="about")
+    about = Homepage.objects.filter(section="about").first()
     return render(request, "homepage/about.html", {"about":about})
 
 def achievements(request):

@@ -1,3 +1,10 @@
+<a href="{% url 'home' %}" 
+    class="nav-item 
+        {% if request.resolver_match.url_name == 'home' %}active{% endif %} ">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+    <span class="nav-label">Home</span>
+</a>
+
 <a href="{% url 'profile' %}" 
     class="nav-item 
         {% if request.resolver_match.url_name == 'profile' %}active{% endif %} ">
@@ -5,7 +12,8 @@
     <span class="nav-label">Profile</span>
 </a>
 
-{% if "attendance_marker" in USER_TAGS %}
+{% if "attendance_marker" in USER_TAGS or user.role == 'FACULTY' %}
+
 <a href="{% url 'dashboard_upload_attendance' %}" 
     class="nav-item 
     {% if request.resolver_match.url_name == 'dashboard_upload_attendance' %}active{% endif %} ">
@@ -13,14 +21,15 @@
     <span class="nav-label">Take Attendance</span>
 </a>
 
-    {% if user.role == 'FACULTY' %}
+{% if user.role == 'FACULTY' %}
     <a href="{% url 'attendance_report' %}" 
         class="nav-item 
         {% if request.resolver_match.url_name == 'attendance_report' %}active{% endif %}">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" class="lucide lucide-file-text logout-icon"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
         <span class="nav-label">Attendance Report</span>
     </a>
-    {% endif %}
+{% endif %}
+
 {% endif %}
 
 {% if user.role == 'CADET' %}
