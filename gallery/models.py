@@ -1,14 +1,15 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.utils import timezone
 
 class Gallery(models.Model):
 
     # CATEGORY CHOICES
     CATEGORY_CHOICES = [
-        ('news', 'News'),
-        ('events', 'Events'),
-        ('achievement', 'Achievement'),
-        ('gallery', 'Gallery'),
+        ('all', 'All'),
+        ('boys', 'NCC Army Boys'),
+        ('girls', 'NCC Army Girls'),
+        ('naval', 'NCC Army Naval'),
     ]
 
     # VISIBILITY CHOICES
@@ -19,20 +20,6 @@ class Gallery(models.Model):
 
     title = models.CharField(max_length=150)
 
-    description = models.CharField(
-        max_length=255,
-        blank=True
-    )
-
-    content = models.TextField(
-        blank=True
-    )
-
-    author = models.CharField(
-        max_length=100,
-        blank=True
-    )
-
     visibility = models.CharField(
         max_length=10,
         choices=VISIBILITY_CHOICES,
@@ -41,11 +28,11 @@ class Gallery(models.Model):
 
     category = models.CharField(
         max_length=20,
-        choices=CATEGORY_CHOICES
+        choices=CATEGORY_CHOICES,
+        default='all'
     )
 
-    # User-selected date (event/news date)
-    date = models.DateField()
+    date = models.DateField(default=timezone.now)
 
     image = models.ImageField(
         upload_to='gallery/',
@@ -56,7 +43,6 @@ class Gallery(models.Model):
         ]
     )
 
-    # Automatically handled timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

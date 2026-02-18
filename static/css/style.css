@@ -591,7 +591,9 @@ footer a:hover {
     background-color: var(--white-2);
 }
 
-.sidebar button {
+.sidebar button,
+.sidebar a{
+    text-decoration: none;
     display: block;
     width: 75%;
     background: none;
@@ -601,6 +603,7 @@ footer a:hover {
     margin-block: 10px;
     color: var(--brown);
     font-weight: bold;
+    font-size: var(--text-1);
     cursor: pointer;
 }
 
@@ -775,7 +778,7 @@ footer a:hover {
     .gallery-grid {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         justify-content: center;
         gap: 1em;
         margin-bottom: 20px;
@@ -783,7 +786,7 @@ footer a:hover {
 
     .gallery-grid img {
       width: 100%;
-      height: 100%;
+      height: 250px;
       object-fit: cover;
       cursor: pointer;
       border-radius: 10px;
@@ -968,9 +971,9 @@ footer a:hover {
         flex-direction: column;
     }
 
-    .gallery-grid{
+    /* .gallery-grid{
         justify-items: center;
-    }
+    } */
 
     /* Footer */
     .footer-links{
@@ -1106,10 +1109,10 @@ footer a:hover {
         padding: 20px;
     }
 
-    .gallery-grid{
+    /* .gallery-grid{
         grid-template-columns: 1fr;
         gap: 80px;
-    }
+    } */
 
     .gallery-item .actions{
         position: static;

@@ -38,7 +38,9 @@
   margin-right: 20px;
 }
 
-.sidebar button {
+.sidebar button,
+.sidebar a {
+  text-decoration: none;
   display: block;
   width: 100%;
   background: none;

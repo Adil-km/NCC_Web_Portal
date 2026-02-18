@@ -9,10 +9,22 @@
 <div class="gallery-container">
 
   <aside class="sidebar">
-        <button class="active">All events</button>
-        <button>NCC Army Boys</button>
-        <button>NCC Army Girls</button>
-        <button>NCC Army Naval</button>
+        <a 
+        href="{% url 'gallery' %}" 
+        class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
+        >All events</a>
+        <a 
+        href="{% url 'boys_gallery' %}"
+        class="{% if request.resolver_match.url_name == 'boys_gallery' %}active{% endif %}"
+        >NCC Army Boys</a>
+        <a 
+        href="{% url 'girls_gallery' %}"
+        class="{% if request.resolver_match.url_name == 'girls_gallery' %}active{% endif %}"
+        >NCC Army Girls</a>
+        <a 
+        href="{% url 'naval_gallery' %}"
+        class="{% if request.resolver_match.url_name == 'naval_gallery' %}active{% endif %}"
+        >NCC Army Naval</a>
   </aside>
 
   <div class="gallery-grid" id="galleryGrid">

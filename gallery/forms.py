@@ -12,9 +12,6 @@ class UploadImageForm(forms.ModelForm):
         fields = [
             'image',
             'title',
-            'description',
-            'content',
-            'author',
             'visibility',
             'category',
             'date',
@@ -23,9 +20,6 @@ class UploadImageForm(forms.ModelForm):
         labels = {
             'image': 'Image',
             'title': 'Title',
-            'description': 'Description (optional)',
-            'content': 'Content (optional)',
-            'author': 'Author (optional)',
             'visibility': 'Visibility',
             'category': 'Category',
             'date': 'Date',
@@ -34,17 +28,6 @@ class UploadImageForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'placeholder': 'Enter title'
-            }),
-            'description': forms.Textarea(attrs={
-                'rows': 3,
-                'placeholder': 'Short description (optional)'
-            }),
-            'content': forms.Textarea(attrs={
-                'rows': 4,
-                'placeholder': 'Detailed content (optional)'
-            }),
-            'author': forms.TextInput(attrs={
-                'placeholder': 'Author name (optional)'
             }),
             'visibility': forms.RadioSelect(),
             'category': forms.Select(),
