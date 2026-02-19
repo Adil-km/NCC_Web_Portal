@@ -13,8 +13,8 @@ from gallery.forms import UploadImageForm
 from gallery.models import Gallery
 from events.forms import NewsEventForm
 from events.models import NewsEvent
-from homepage.forms import UploadHomePageForm
-from homepage.models import Homepage
+from homepage.forms import UploadHomePageForm, WebsiteSectionForm
+from homepage.models import Homepage, WebsiteSection
 from .forms import AssignGroupForm, AssignTagsForm, CreateGroupWithPermissionsForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Count, Q
@@ -407,9 +407,27 @@ def profile_view(request):
 def homepage(request):
     if not user_has_tag(request.user, "website_manager"):
         return HttpResponse("You are not allowed")
+
+    about_obj = WebsiteSection.objects.filter(section='about').first()
+
+    about_paragraphs = []
+
+    if about_obj and about_obj.description:
+        about_paragraphs = [
+            item.strip()
+            for item in about_obj.description.split("<br>")
+            if item.strip()
+        ]
+
     context = {
         'slider_images': Homepage.objects.filter(section='slider'),
         'about_images': Homepage.objects.filter(section='about'),
+
+        # Keep full object (for title etc.)
+        'about_section': about_obj,
+
+        # Send split description separately
+        'about_paragraphs': about_paragraphs,
     }
 
     return render(request, 'dashboard/homepage.html', context)
@@ -441,3 +459,27 @@ def delete_homepage_image(request, pk):
         logger.info(f"Image deleted: {image_obj.image.name}")
         image_obj.delete()
     return redirect("homepage")
+
+def upload_desc(request):
+    if not user_has_tag(request.user, "website_manager"):
+        return HttpResponse("You are not allowed")
+
+    if request.method == "POST":
+        section_type = request.POST.get("section")
+
+        # Get existing instance if exists
+        instance = WebsiteSection.objects.filter(section=section_type).first()
+
+        # Attach instance to form (important!)
+        form = WebsiteSectionForm(request.POST, instance=instance)
+
+        if form.is_valid():
+            form.save()
+            return redirect("homepage")
+
+    else:
+        form = WebsiteSectionForm()
+
+    return render(request, "dashboard/upload_desc.html", {
+        "form": form
+    })

@@ -21,6 +21,7 @@ urlpatterns = [
     # Homepage
     path('homepage/', views.homepage, name="homepage" ),
     path('homepage/upload/', views.upload_homepage, name="upload_homepage" ),
+    path('homepage/upload/desc', views.upload_desc, name="upload_desc" ),
     path("homepage/delete/<int:pk>/", views.delete_homepage_image, name="delete_homepage_image"),
     
     # News & Events dashboard

@@ -64,7 +64,8 @@
     right: 10px;
 }
 
-.gallery-item .actions button{
+.gallery-item .actions button,
+.about-desc button{
     border: none;
     font-size: var(--text-1);
     padding: 10px;
@@ -73,7 +74,8 @@
     color: var(--white-1);
 }
 
-.gallery-item .actions .update{
+.gallery-item .actions .update,
+.about-desc .update{
     background-color: #5D9C59;
 }
 .gallery-item .actions .delete{
@@ -156,6 +158,9 @@
     }
 }
 
+.about-desc p{
+    width: 100%;
+}
 
 /* ------------------- */
 /* upload_gallery.html */

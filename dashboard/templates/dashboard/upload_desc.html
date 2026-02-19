@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/gallery.css' %}">
+{% endblock head %}
+
+{% block heading %}
+    {% if edit %}
+        Edit Website Section
+    {% else %}
+        Create Website Section
+    {% endif %}
+{% endblock heading %}
+
+{% block body %}
+<div class="upload-container">
+    
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <!-- Section -->
+        <div>
+            <label>Section</label>
+            {{ form.section.errors }}
+            {{ form.section }}
+        </div>
+
+        <!-- Title -->
+        <div>
+            <label>Title</label>
+            {{ form.title.errors }}
+            {{ form.title }}
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label>Description</label>
+            {{ form.description.errors }}
+            {{ form.description }}
+        </div>
+
+        <button type="submit">
+            {% if edit %} Update {% else %} Save {% endif %}
+        </button>
+    </form>
+
+</div>
+{% endblock body %}

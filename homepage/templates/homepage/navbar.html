@@ -30,12 +30,30 @@
         </div>
 
         <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About Us</a></li>
-            <li><a href="{% url 'gallery' %}">Gallery</a></li>
-            <li><a href="{% url 'events' %}">News & Events</a></li>
-            <li><a href="{% url 'wings' %}">Wings</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'home' %}" 
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'home' %}current{% endif %}"
+                >Home</a></li>
+            <li><a href="{% url 'about' %}"
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'about' %}current{% endif %}"
+                >About Us</a></li>
+            <li><a href="{% url 'gallery' %}"
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'gallery' %}current{% endif %}"
+                >Gallery</a></li>
+            <li><a href="{% url 'events' %}"
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'events' %}current{% endif %}"
+                >News & Events</a></li>
+            <li><a href="{% url 'wings' %}"
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'wings' %}current{% endif %}"
+                >Wings</a></li>
+            <li><a href="{% url 'contact' %}"
+                class="nav-item 
+                {% if request.resolver_match.url_name == 'contact' %}current{% endif %}"
+                >Contact</a></li>
         </ul>
     </div>
     

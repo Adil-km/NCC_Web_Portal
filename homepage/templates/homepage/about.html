@@ -15,8 +15,14 @@
         </div>
         <div class="about-content">
             <h4>ABOUT US</h4>
+            {% if about_paragraphs %}
+                {% for paragraph in about_paragraphs %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+            {% else %}
             <p>The National Cadet Corps (NCC) unit at Farook College is a prominent co-curricular organisation that promotes character building, leadership, discipline, and service among students. At Farook College, the NCC comprises three wings — Army, Navy, and Girls — with a combined strength of around 210 cadets (106 in the Army wing, about 50 in the Naval, and 54 in the Girls wing) participating in regular drills, leadership training, and community initiatives.</p>
             <p>Cadets engage in activities that include Republic Day march pasts, social service drives such as water-body cleanup campaigns, and recognition ceremonies for outstanding performance in national camps and competitions. Guided by experienced Associate NCC Officers, the programme helps students gain confidence, teamwork skills, and a spirit of adventure while preparing them for opportunities in defence and public service.</p>
+            {% endif %}
         </div>
     </div>
 </div>
