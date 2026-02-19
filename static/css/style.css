@@ -1255,144 +1255,26 @@ footer a:hover {
 /* Upload page end */
 
 
-/* Contact section start */
-
-.contact-header {
-    text-align: center;
-    padding: 60px 20px 40px;
-}
-
-.contact-header h1 {
-    font-size: var(--heading-1);
-    color: var(--brown);
-    margin-bottom: 10px;
-}
-
-.contact-header p {
-    font-size: var(--text-1);
-    color: #555;
-}
-
-.contact-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 40px 80px 80px;
-}
-
-/* Contact Info Cards */
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.contact-card {
-    background-color: var(--white-2);
-    padding: 25px;
-    border-radius: 16px;
-    border-left: 6px solid var(--brown);
-}
-
-.contact-card h3 {
-    color: var(--brown);
-    margin-bottom: 10px;
-    font-size: var(--heading-2);
-}
-
-.contact-card p {
-    font-size: var(--text-1);
-    line-height: 1.6;
-}
-
-/* Contact Form */
-.contact-form-container {
-    background-color: var(--white-2);
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.contact-form-container h2 {
-    font-size: var(--heading-2);
-    color: var(--brown);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: var(--text-1);
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-family: 'Poppins', sans-serif;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button {
-    margin-top: 10px;
-    padding: 14px;
-    background-color: var(--brown);
-    color: var(--white-1);
-    font-size: var(--text-1);
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background-color: var(--brown-dark);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .contact-section {
-        grid-template-columns: 1fr;
-        padding: 40px 30px 60px;
-    }
-}
-
-/* Contact section end */
 
 
 /* NCC wings start */
 
-.contact-page {
+.ncc-details-header{
     padding-top: 60px;
-    padding-bottom: 80px;
-}
-.contact-header{
     background-color: var(--white-2);
 }
-.contact-header h1 {
+.ncc-details-header h1 {
     font-size: var(--heading-1);
     color: var(--brown);
     text-align: center;
     margin-bottom: 8px;
 }
 
-.contact-header p {
-    font-size: var(--text-1);
+.ncc-details-header p {
+    font-size: var(--text-1);   
     text-align: center;
     color: #555;
-    margin-bottom: 40px;
+    padding-bottom: 60px;
 }
 
 .ncc-details-section {
@@ -1402,6 +1284,7 @@ footer a:hover {
     padding: 0 80px;
     padding-bottom: 50px;
     background-color: var(--white-2);
+    padding-bottom: 80px;
 }
 
 .ncc-card {

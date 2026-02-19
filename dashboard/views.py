@@ -63,7 +63,7 @@ def addtag(request):
 def dashboard(request):
     return render(request, 'dashboard/home.html')
 
-@login_required(login_url='login')
+@login_required
 def profile(request):
     user_tags = UserTag.objects.filter(users__user=request.user)
     return render(request, "dashboard/profile.html", {
@@ -113,6 +113,7 @@ def create_group(request):
 
 # Gallery Managing
 
+@login_required
 def gallery(request):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
@@ -120,6 +121,7 @@ def gallery(request):
     images = Gallery.objects.all().order_by("-id")
     return render(request, "dashboard/manage_gallery.html",{'images': images})
 
+@login_required
 def upload_gallery(request):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
@@ -138,6 +140,7 @@ def upload_gallery(request):
         {'form': form}
     )
 
+@login_required
 def edit_image(request, pk):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
@@ -164,6 +167,7 @@ def edit_image(request, pk):
         }
     )
 
+@login_required
 def delete_image(request, pk):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
@@ -176,6 +180,7 @@ def delete_image(request, pk):
 
 # Events
 
+@login_required
 def events(request):
     if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
@@ -188,6 +193,7 @@ def events(request):
         {"events": events}
     )
 
+@login_required
 def upload_event(request):
     if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
@@ -206,6 +212,7 @@ def upload_event(request):
         {"form": form}
     )
 
+@login_required
 def edit_event(request, pk):
     if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
@@ -235,6 +242,7 @@ def edit_event(request, pk):
         }
     )
 
+@login_required
 def delete_event(request, pk):
     if not user_has_tag(request.user, "news_editor"):
         return HttpResponse("You are not allowed")
@@ -262,6 +270,7 @@ def upload_resources(request):
 def upload_attendance(request):
     return render(request, "dashboard/upload_attendance.html")
 
+@login_required
 def create_attendance(request):
     # Get all cadets (customize filter as needed, e.g., is_staff=False)
     cadets = User.objects.all().order_by('username').filter(role="CADET")
@@ -376,7 +385,7 @@ def profile_view(request):
         attendance_percentage = round((present_count / total_events) * 100, 1)
 
     # 2. Get Recent History
-    recent_activity = Attendance.objects.filter(user=profile_user)\
+    recent_activity = Attendance.objects.filter(user=profile_user).filter(status="PRESENT")\
         .select_related('activity')\
         .order_by('-activity__start_date')[:5]
 
@@ -396,6 +405,8 @@ def profile_view(request):
 
 #  homepage
 def homepage(request):
+    if not user_has_tag(request.user, "website_manager"):
+        return HttpResponse("You are not allowed")
     context = {
         'slider_images': Homepage.objects.filter(section='slider'),
         'about_images': Homepage.objects.filter(section='about'),
@@ -404,8 +415,8 @@ def homepage(request):
     return render(request, 'dashboard/homepage.html', context)
 
 def upload_homepage(request):
-    # if not user_has_tag(request.user, "gallery_manager"):
-    #     return HttpResponse("You are not allowed")
+    if not user_has_tag(request.user, "website_manager"):
+        return HttpResponse("You are not allowed")
     
     if request.method == 'POST':
         form = UploadHomePageForm(request.POST, request.FILES)
@@ -422,8 +433,8 @@ def upload_homepage(request):
     )
 
 def delete_homepage_image(request, pk):
-    # if not user_has_tag(request.user, "gallery_manager"):
-    #     return HttpResponse("You are not allowed")
+    if not user_has_tag(request.user, "website_manager"):
+        return HttpResponse("You are not allowed")
     
     if request.method == "POST":
         image_obj = get_object_or_404(Homepage, pk=pk)

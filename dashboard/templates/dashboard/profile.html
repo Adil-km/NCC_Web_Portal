@@ -79,7 +79,7 @@ Cadet Profile
                     <tr>
                         <th>Activity</th>
                         <th>Date</th>
-                        <th>Status</th>
+                        <!-- <th>Status</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -92,13 +92,13 @@ Cadet Profile
                             </small>
                         </td>
                         <td>{{ record.activity.start_date|date:"d M, Y" }}</td>
-                        <td>
+                        <!-- <td>
                             {% if record.status == 'PRESENT' %}
                                 <span class="status-badge st-present">PRESENT</span>
                             {% else %}
                                 <span class="status-badge st-absent">ABSENT</span>
                             {% endif %}
-                        </td>
+                        </td> -->
                     </tr>
                     {% endfor %}
                 </tbody>
