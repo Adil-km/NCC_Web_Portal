@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block header %}
-    <link rel="stylesheet" href="{% static 'homepage/css/contact.css' %}">
+<link rel="stylesheet" href="{% static 'homepage/css/contact.css' %}">
 {% endblock header %}
 
 {% block body %}
@@ -63,22 +63,22 @@
         <form class="contact-form" id="contactForm">
             <div>
                 <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Your name" required>
+                <input type="text" id="name" name="from_name" placeholder="Your name" required>
             </div>
 
             <div>
                 <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="your@email.com" required>
+                <input type="email" id="email" name="from_email" placeholder="your@email.com" required>
             </div>
 
             <div>
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" placeholder="Reason for contacting">
+                <input type="text" id="subject" name="subject" placeholder="Reason for contacting" required>
             </div>
 
             <div>
                 <label for="message">Message</label>
-                <textarea id="message" rows="17" placeholder="Write your message here..." required></textarea>
+                <textarea id="message" name="message" rows="17" placeholder="Write your message here..." required></textarea>
             </div>
 
             <button type="submit">Submit Message</button>
@@ -87,34 +87,33 @@
 
 </section>
 
-<!-- EMAILJS SCRIPT -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<!-- EMAILJS v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-(function(){
-    emailjs.init("sWUIUq_sS6BnIT1-F"); // replace
-})();
-</script>
+document.addEventListener("DOMContentLoaded", function () {
 
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const params = {
-        from_name: document.getElementById("name").value,
-        from_email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value
-    };
-
-    emailjs.send("service_xqe393o", "template_7wud5h8", params)
-    .then(function(){
-        alert("Message sent successfully!");
-        document.getElementById("contactForm").reset();
-    }, function(error){
-        alert("Failed to send message.");
-        console.log(error);
+    // Initialize EmailJS
+    emailjs.init({
+        publicKey: "sWUIUq_sS6BnIT1-F"
     });
+
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm("service_xqe393o", "template_7wud5h8", this)
+        .then(function () {
+            alert("Message sent successfully!");
+            form.reset();
+        })
+        .catch(function (error) {
+            console.error("EmailJS Error:", error);
+            alert("Failed to send message. Please try again.");
+        });
+    });
+
 });
 </script>
 
