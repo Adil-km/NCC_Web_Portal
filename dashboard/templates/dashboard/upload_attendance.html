@@ -63,7 +63,7 @@
                         </div>
                         <div>
                             <p class="user-name">
-                                {{ cadet.get_full_name|default:cadet.username }}
+                                {{ cadet.get_full_name|default:cadet.username|capfirst }}
                             </p>
                             <p class="stat-label">ID: {{ cadet.id }}</p>
                         </div>

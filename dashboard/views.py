@@ -1,3 +1,4 @@
+import csv
 import json
 import re
 from django.http import HttpResponse, JsonResponse
@@ -362,6 +363,56 @@ def attendance_report(request):
             cadet.percentage = 0
 
     return render(request, 'dashboard/attendance_report.html', {'cadets': cadets})
+
+@login_required
+def download_attendance_csv(request):
+
+    # Query cadets with statistics
+    cadets = User.objects.annotate(
+        total_events=Count('attendance'),
+        present_count=Count('attendance', filter=Q(attendance__status='PRESENT')),
+        absent_count=Count('attendance', filter=Q(attendance__status='ABSENT'))
+    ).filter(role="CADET").order_by('username')
+
+
+    # Create HTTP response with CSV format
+    response = HttpResponse(
+        content_type='text/csv'
+    )
+
+    response['Content-Disposition'] = 'attachment; filename="attendance_report.csv"'
+
+
+    writer = csv.writer(response)
+
+    # CSV Header
+    writer.writerow([
+        'Cadet Name',
+        'Total Activities',
+        'Present',
+        'Absent',
+        'Attendance %'
+    ])
+
+
+    # CSV Rows
+    for cadet in cadets:
+
+        if cadet.total_events > 0:
+            percentage = round((cadet.present_count / cadet.total_events) * 100, 1)
+        else:
+            percentage = 0
+
+        writer.writerow([
+            cadet.username.capitalize(),
+            cadet.total_events,
+            cadet.present_count,
+            cadet.absent_count,
+            percentage
+        ])
+
+
+    return response
 
 @login_required
 def profile_view(request):

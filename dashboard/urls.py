@@ -39,6 +39,7 @@ urlpatterns = [
     path('attendance/upload/', views.create_attendance, name='dashboard_upload_attendance'),
     path('attendance/view/', views.view_attendance, name='dashboard_view_attendance'),
     path('attendance/report/', views.attendance_report, name='attendance_report'),
+    path('attendance/report/download', views.download_attendance_csv, name='download_attendance_csv'),
     
     path('', views.profile_view, name="profile" ),
 

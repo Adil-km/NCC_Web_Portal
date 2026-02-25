@@ -13,7 +13,7 @@
     <div class="report-card">
         <div class="card-header attendance-header">
             <h2 class="placeholder-title">Cadet Performance Report</h2>
-            <p class="attendance-subtitle">Detailed attendance breakdown by cadet</p>
+            <a href="{% url 'download_attendance_csv' %}" class="report-download-btn">Download Report</a>
         </div>
 
         <div class="report-table-wrapper">
@@ -36,7 +36,7 @@
                                     {{ cadet.username|slice:":1"|upper }}
                                 </div>
                                 <div class="user-meta">
-                                    <span class="user-name">{{ cadet.get_full_name|default:cadet.username }}</span>
+                                    <span class="user-name">{{ cadet.get_full_name|default:cadet.username|capfirst }}</span>
                                     <span class="user-id">ID: {{ cadet.id }}</span>
                                 </div>
                             </div>

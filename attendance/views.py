@@ -1,6 +1,7 @@
 import json
+import csv
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Activity, Attendance
@@ -55,3 +56,68 @@ def mark_attendance(request, activity_id):
         'cadet_list': cadet_list,
     }
     return render(request, 'dashboard/mark_attendance.html', context)
+
+
+def download_report_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="NCC_Full_Report.csv"'
+
+    writer = csv.writer(response)
+
+    # Title
+    writer.writerow(['NCC FULL CADET REPORT'])
+    writer.writerow([])
+
+    # Header Row
+    writer.writerow([
+        'Username',
+        'Full Name',
+        'Total Activities',
+        'Present',
+        'Absent',
+        'Total Hours',
+        'Attendance %'
+    ])
+
+    users = User.objects.all().order_by('username')
+
+    for user in users:
+
+        total_activities = Attendance.objects.filter(
+            user=user
+        ).count()
+
+        present_count = Attendance.objects.filter(
+            user=user,
+            status='PRESENT'
+        ).count()
+
+        absent_count = Attendance.objects.filter(
+            user=user,
+            status='ABSENT'
+        ).count()
+
+        total_hours = Attendance.objects.filter(
+            user=user,
+            status='PRESENT'
+        ).select_related('activity').aggregate(
+            total=Sum('activity__total_hours')
+        )['total'] or 0
+
+        if total_activities > 0:
+            percentage = round((present_count / total_activities) * 100, 2)
+        else:
+            percentage = 0
+
+        writer.writerow([
+            user.username,
+            user.get_full_name(),
+            total_activities,
+            present_count,
+            absent_count,
+            total_hours,
+            f"{percentage}%"
+        ])
+
+    return response
