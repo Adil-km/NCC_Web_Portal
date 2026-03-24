@@ -2,60 +2,64 @@
 
 .contact-header {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 30px 20px 15px; /* Tightened padding */
 }
 
 .contact-header h1 {
     font-size: var(--heading-1);
     color: var(--brown);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .contact-header p {
     font-size: var(--text-1);
     color: #555;
+    margin: 0;
 }
 
 .contact-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 40px 80px 80px;
+    gap: 30px;
+    padding: 20px 80px 60px; /* Reduced top padding */
+    align-items: start;
 }
 
-/* Contact Info Cards */
+/* Contact Info Cards - Now a 2x2 Grid */
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
 .contact-card {
     background-color: var(--white-2);
-    padding: 25px;
-    border-radius: 16px;
-    border-left: 6px solid var(--brown);
-    box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+    padding: 15px; /* Reduced padding for compactness */
+    border-radius: 12px;
+    border-left: 5px solid var(--brown);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .contact-card h3 {
     color: var(--brown);
-    margin-bottom: 10px;
-    font-size: var(--heading-2);
+    margin-bottom: 8px;
+    font-size: calc(var(--heading-2) * 0.85); /* Slightly scaled down */
 }
 
 .contact-card p {
-    font-size: var(--text-1);
-    line-height: 1.6;
+    font-size: calc(var(--text-1) * 0.9);
+    line-height: 1.4;
+    margin: 0;
 }
 
 /* Contact Form */
 .contact-form-container {
     background-color: var(--white-2);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 25px;
+    border-radius: 16px;
     box-shadow: 0 6px 10px rgba(0,0,0,0.12);
 }
+
 .contact-form-container:hover {
     box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
@@ -63,39 +67,53 @@
 .contact-form-container h2 {
     font-size: var(--heading-2);
     color: var(--brown);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-top: 0;
     text-align: center;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
     gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form label {
     font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
+    margin-bottom: 4px;
+    font-size: calc(var(--text-1) * 0.9);
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     font-size: var(--text-1);
     border-radius: 6px;
     border: 1px solid #ccc;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Ensures padding doesn't break flex layout */
 }
 
 .contact-form textarea {
     resize: vertical;
+    min-height: 100px;
 }
 
 .contact-form button {
-    margin-top: 10px;
-    padding: 14px;
+    margin-top: 5px;
+    padding: 12px;
     background-color: var(--brown);
     color: var(--white-1);
     font-size: var(--text-1);
@@ -103,6 +121,7 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .contact-form button:hover {
@@ -113,8 +132,16 @@
 @media (max-width: 900px) {
     .contact-section {
         grid-template-columns: 1fr;
-        padding: 40px 30px 60px;
+        padding: 20px 30px 40px;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr; /* Stack cards vertically on mobile */
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
     }
 }
-
 /* Contact section end */

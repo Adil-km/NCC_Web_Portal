@@ -49,7 +49,7 @@ Cadet Profile
             </ul>
         </div>
 
-        {% if not profile_user.username == "teacher" %}
+        {% if user.role == 'CADET' %}
         <!-- Right Card -->
         <div class="profile-card">
             <h3 class="section-title">Performance Overview</h3>
