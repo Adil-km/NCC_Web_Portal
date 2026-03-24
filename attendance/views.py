@@ -1,123 +1,130 @@
-import json
 import csv
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import get_user_model
-from django.views.decorators.csrf import ensure_csrf_cookie
-from .models import Activity, Attendance
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from accounts.models import User
+from attendance.forms import ActivityForm
+from attendance.models import Attendance
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum, Count, Q
 
-User = get_user_model()
+def upload_attendance(request):
+    return render(request, "dashboard/upload_attendance.html")
 
-@ensure_csrf_cookie
-def mark_attendance(request, activity_id):
-    activity = get_object_or_404(Activity, pk=activity_id)
+@login_required
+def create_attendance(request):
+    cadets = User.objects.all().order_by('username').filter(role="CADET")
 
     if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            attendance_list = data.get('attendance_data', [])
-            
-            # Efficiently update or create records
-            for entry in attendance_list:
-                user_id = entry.get('user_id')
-                status = entry.get('status')
-                
-                if user_id and status:
-                    Attendance.objects.update_or_create(
-                        user_id=user_id,
-                        activity=activity,
-                        defaults={'status': status}
+        form = ActivityForm(request.POST)
+        
+        if form.is_valid():
+            new_activity = form.save()
+            marked_count = 0
+            for cadet in cadets:
+                status_key = f"status_{cadet.id}"
+                status_value = request.POST.get(status_key)
+
+                if status_value:
+                    Attendance.objects.create(
+                        user=cadet,
+                        activity=new_activity,
+                        status=status_value
                     )
+                    marked_count += 1
             
-            return JsonResponse({'status': 'success', 'message': 'Attendance marked successfully'})
-        except Exception as e:
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+            messages.success(request, f"Created '{new_activity.name}' and marked attendance for {marked_count} cadets.")
+            return redirect('dashboard_upload_attendance')
+        else:
+            messages.error(request, "Error creating activity. Please check the fields.")
+    else:
+        form = ActivityForm()
 
-    # --- GET Request Logic ---
-    
-    # Get all users (You might want to filter this, e.g., User.objects.filter(is_cadet=True))
-    users = User.objects.all().order_by('username')
-    
-    # Get existing attendance for this activity to pre-fill the form
-    existing_attendance = Attendance.objects.filter(activity=activity)
-    # Create a dictionary for O(1) lookup: {user_id: 'PRESENT'}
-    attendance_map = {att.user_id: att.status for att in existing_attendance}
+    return render(request, 'dashboard/upload_attendance.html', {
+        'form': form,
+        'cadets': cadets
+    })
 
-    # Prepare list for template
-    cadet_list = []
-    for user in users:
-        cadet_list.append({
-            'user': user,
-            'current_status': attendance_map.get(user.id) # Will be None, 'PRESENT', or 'ABSENT'
-        })
+@login_required
+def view_attendance(request):
+    user = request.user
+    my_records = Attendance.objects.filter(user=user).select_related('activity').order_by('-activity__start_date')
+
+    total_activities = my_records.count()
+    present_count = my_records.filter(status='PRESENT').count()
+    
+    total_hours = my_records.filter(status='PRESENT').aggregate(
+        total=Sum('activity__total_hours')
+    )['total'] or 0
+
+    if total_activities > 0:
+        attendance_percentage = (present_count / total_activities) * 100
+    else:
+        attendance_percentage = 0
 
     context = {
-        'activity': activity,
-        'cadet_list': cadet_list,
+        'my_records': my_records,
+        'stats': {
+            'total_activities': total_activities,
+            'present_count': present_count,
+            'absent_count': total_activities - present_count,
+            'total_hours': total_hours,
+            'percentage': round(attendance_percentage, 1)
+        }
     }
-    return render(request, 'dashboard/mark_attendance.html', context)
+    
+    return render(request, 'dashboard/my_attendance.html', context)
 
+def attendance_report(request):
+    cadets = User.objects.annotate(
+        total_events=Count('attendance'),
+        present_count=Count('attendance', filter=Q(attendance__status='PRESENT')),
+        absent_count=Count('attendance', filter=Q(attendance__status='ABSENT'))
+    ).order_by('username').filter(role="CADET")
 
-def download_report_csv(request):
+    for cadet in cadets:
+        if cadet.total_events > 0:
+            cadet.percentage = round((cadet.present_count / cadet.total_events) * 100, 1)
+        else:
+            cadet.percentage = 0
 
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="NCC_Full_Report.csv"'
+    return render(request, 'dashboard/attendance_report.html', {'cadets': cadets})
 
+@login_required
+def download_attendance_csv(request):
+    cadets = User.objects.annotate(
+        total_events=Count('attendance'),
+        present_count=Count('attendance', filter=Q(attendance__status='PRESENT')),
+        absent_count=Count('attendance', filter=Q(attendance__status='ABSENT'))
+    ).filter(role="CADET").order_by('username')
+
+    response = HttpResponse(
+        content_type='text/csv'
+    )
+
+    response['Content-Disposition'] = 'attachment; filename="attendance_report.csv"'
     writer = csv.writer(response)
-
-    # Title
-    writer.writerow(['NCC FULL CADET REPORT'])
-    writer.writerow([])
-
-    # Header Row
     writer.writerow([
-        'Username',
-        'Full Name',
+        'Cadet Name',
         'Total Activities',
         'Present',
         'Absent',
-        'Total Hours',
         'Attendance %'
     ])
 
-    users = User.objects.all().order_by('username')
+    for cadet in cadets:
 
-    for user in users:
-
-        total_activities = Attendance.objects.filter(
-            user=user
-        ).count()
-
-        present_count = Attendance.objects.filter(
-            user=user,
-            status='PRESENT'
-        ).count()
-
-        absent_count = Attendance.objects.filter(
-            user=user,
-            status='ABSENT'
-        ).count()
-
-        total_hours = Attendance.objects.filter(
-            user=user,
-            status='PRESENT'
-        ).select_related('activity').aggregate(
-            total=Sum('activity__total_hours')
-        )['total'] or 0
-
-        if total_activities > 0:
-            percentage = round((present_count / total_activities) * 100, 2)
+        if cadet.total_events > 0:
+            percentage = round((cadet.present_count / cadet.total_events) * 100, 1)
         else:
             percentage = 0
 
         writer.writerow([
-            user.username,
-            user.get_full_name(),
-            total_activities,
-            present_count,
-            absent_count,
-            total_hours,
-            f"{percentage}%"
+            cadet.username.capitalize(),
+            cadet.total_events,
+            cadet.present_count,
+            cadet.absent_count,
+            percentage
         ])
 
     return response

@@ -34,13 +34,7 @@ urlpatterns = [
     path('resources/upload/', views.upload_resources, name='dashboard_upload_resources'),
     
     path('notice/',include("notice.urls") ),
-
-    # path('attendance/upload/', views.upload_attendance, name='dashboard_upload_attendance'),
-    path('attendance/upload/', views.create_attendance, name='dashboard_upload_attendance'),
-    path('attendance/view/', views.view_attendance, name='dashboard_view_attendance'),
-    path('attendance/report/', views.attendance_report, name='attendance_report'),
-    path('attendance/report/download', views.download_attendance_csv, name='download_attendance_csv'),
-    
+    path("attendance/",include("attendance.urls")),
     path('', views.profile_view, name="profile" ),
 
 ]
