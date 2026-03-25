@@ -14,7 +14,6 @@ class Gallery(models.Model):
     VISIBILITY_CHOICES = [
         ('public', 'Public'),
         ('private', 'Private'),
-        ('internal', 'Internal'),
     ]
 
     title = models.CharField(max_length=150)

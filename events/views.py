@@ -116,3 +116,13 @@ def delete_event(request, pk):
         return redirect("dashboard_events")
 
     return HttpResponse("Invalid request method")
+
+@login_required
+def internal_news(request):
+    events = NewsEvent.objects.all().filter(visibility="internal").order_by("-date", "-created_at")
+
+    return render(
+        request,
+        "dashboard/internal_news.html",
+        {"events": events}
+    )

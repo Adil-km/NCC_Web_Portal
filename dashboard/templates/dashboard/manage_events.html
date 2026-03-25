@@ -15,8 +15,13 @@ Manage News & Events
 
     {% if events %}
     {% for event in events %}
-        <div class="event-item">
-
+        <div class="event-item 
+        {% if event.visibility == 'internal' %}
+          internal-news
+        {% elif event.visibility == 'private'%}
+          private-news
+        {% endif %}
+        ">
             <div class="event-date">
                 <p>{{ event.date }}</p>
             </div>

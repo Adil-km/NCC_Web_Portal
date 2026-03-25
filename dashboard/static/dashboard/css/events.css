@@ -308,3 +308,12 @@
 .upload-container form button:hover {
     background-color: var(--brown-dark);
 }
+
+.internal-news{
+    background-color: rgb(249, 198, 198);
+}
+
+.private-news{
+    background-color: rgb(202, 202, 202);
+
+}

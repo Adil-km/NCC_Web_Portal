@@ -18,7 +18,6 @@ class AssignTagsForm(forms.Form):
         selected_user = kwargs.pop('selected_user', None)
         super().__init__(*args, **kwargs)
 
-        # Pre-select currently assigned tags
         if selected_user:
             self.fields['tags'].initial = selected_user.tags.values_list('tag_id', flat=True)
 
@@ -28,16 +27,13 @@ class AssignTagsForm(forms.Form):
 
         print("USER:", user.username)
         print("SELECTED TAGS:", [t.code for t in selected_tags])
-        
-        # Safely assign tags (avoid duplicates)
+
         existing_tag_ids = set(user.tags.values_list('tag_id', flat=True))
         new_tag_ids = set(tag.id for tag in selected_tags)
 
-        # Add new tags
         for tag_id in new_tag_ids - existing_tag_ids:
             UserTagAssignment.objects.create(user=user, tag_id=tag_id)
 
-        # Remove unchecked tags
         for tag_id in existing_tag_ids - new_tag_ids:
             UserTagAssignment.objects.filter(user=user, tag_id=tag_id).delete()
 

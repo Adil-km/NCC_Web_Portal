@@ -258,3 +258,8 @@
 .upload-container form button:hover {
     background-color: var(--brown-dark);
 }
+
+.private-image,
+.private-image img{
+    filter: grayscale(100%);
+}
