@@ -8,18 +8,7 @@ class User(AbstractUser):
         FACULTY = "FACULTY", "Faculty"
 
     role = models.CharField(max_length=50, choices=Role.choices, default=Role.CADET)
-    is_higher_faculty = models.BooleanField(default=False)
     
-    assigned_faculty = models.ForeignKey(
-            'self', 
-            null=True, 
-            blank=True, 
-            on_delete=models.SET_NULL,
-            related_name='assigned_cadets',
-            limit_choices_to={'role': 'FACULTY'},
-            help_text="Designate the Faculty advisor for this Cadet."
-    )
-
 class UserTag(models.Model):
     name = models.CharField(max_length=50, unique=True)
     code = models.SlugField(unique=True)
@@ -33,7 +22,7 @@ class UserTagAssignment(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name="tags"   # IMPORTANT
+        related_name="tags"
     )
     tag = models.ForeignKey(
         UserTag,
