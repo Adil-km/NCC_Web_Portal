@@ -74,7 +74,6 @@ def register_view(request):
 
     return render(request, "register.html")
 
-
 @login_required
 def logout_view(request):
     auth_logout(request)

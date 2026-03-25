@@ -13,7 +13,7 @@
     --shadow: 0 10px 25px rgba(152, 43, 53, 0.1);
     --sidebar-width: 260px;
     --sidebar-collapsed-width: 80px;
-    --transition: all 0.1s ease-in-out;
+    --transition: all 0.3s ease-in-out; /* Slowed down slightly for smoother mobile sliding */
 }
 
 /* --- GLOBAL RESETS --- */
@@ -29,6 +29,7 @@ body {
     color: var(--black);
     min-height: 100vh;
     display: flex;
+    overflow-x: hidden; /* Prevents horizontal scroll jitter on mobile */
 }
 
 /* --- SIDEBAR --- */
@@ -41,7 +42,9 @@ body {
     display: flex;
     flex-direction: column;
     transition: var(--transition);
-    z-index: 100;
+    z-index: 1000; /* Increased to stay above header on mobile */
+    left: 0;
+    top: 0;
 }
 
 #sidebar.collapsed {
@@ -93,6 +96,22 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    overflow-y: auto; /* Scrollable sidebar fix */
+}
+
+/* Custom Scrollbar */
+.nav-container::-webkit-scrollbar {
+    width: 6px;
+}
+.nav-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--brown);
+    border-radius: 10px;
+}
+.nav-container::-webkit-scrollbar-thumb:hover {
+    background: var(--brown-dark);
 }
 
 .nav-item {
@@ -140,6 +159,7 @@ body {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 #main-wrapper.expanded {
@@ -383,7 +403,6 @@ header {
     text-decoration: none;
 }
 
-
 /* Download Grid */
 .download-grid {
     display: grid;
@@ -427,18 +446,66 @@ header {
     gap: 4px;
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet & Smaller Laptops */
 @media (max-width: 1024px) {
-    .grid-2-1, .grid-1-1 { grid-template-columns: 1fr; }
-    #sidebar { width: var(--sidebar-collapsed-width); }
-    #sidebar .sidebar-title, #sidebar .nav-label { display: none; }
-    #main-wrapper { margin-left: var(--sidebar-collapsed-width); }
+    .grid-2-1, .grid-1-1 { 
+        grid-template-columns: 1fr; 
+    }
+    #sidebar { 
+        width: var(--sidebar-collapsed-width); 
+        transform: translateX(0); /* Ensure it doesn't slide off yet */
+    }
+    #sidebar .sidebar-title, 
+    #sidebar .nav-label { 
+        display: none; 
+    }
+    #main-wrapper { 
+        margin-left: var(--sidebar-collapsed-width); 
+    }
 }
 
+/* Mobile Devices */
+@media (max-width: 768px) {
+    /* Slide sidebar completely off-screen by default */
+    #sidebar { 
+        transform: translateX(-100%); 
+        width: var(--sidebar-width); /* Restore full width so text fits when opened */
+        box-shadow: var(--shadow);
+    }
+    
+    /* When a class '.active' is added via JS, slide it back onto the screen */
+    #sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* Force text to show when opened on mobile */
+    #sidebar .sidebar-title, 
+    #sidebar .nav-label { 
+        display: inline-block; 
+        opacity: 1; 
+        pointer-events: auto;
+    }
+
+    /* Main wrapper takes 100% width, ignores sidebar width */
+    #main-wrapper, 
+    #main-wrapper.expanded { 
+        margin-left: 0; 
+        width: 100%;
+    }
+
+    .content-area { 
+        padding: 20px 16px; /* Slightly tighter padding to save screen real estate */
+    }
+}
+
+/* Tiny Mobile Devices */
 @media (max-width: 640px) {
     header { padding: 0 16px; }
     .header-right { gap: 12px; }
     .role-selector { display: none; }
     .user-info { display: none; }
     .download-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; } /* Stack stat cards */
 }
