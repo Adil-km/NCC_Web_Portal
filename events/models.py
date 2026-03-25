@@ -2,9 +2,8 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext_lazy as _
 
-class NewsEvent(models.Model):  # Renamed to singular (Django convention)
+class NewsEvent(models.Model):
     
-    # Using TextChoices for better readability and type safety
     class Category(models.TextChoices):
         NEWS = 'news', _('News')
         EVENTS = 'events', _('Events')
@@ -13,6 +12,7 @@ class NewsEvent(models.Model):  # Renamed to singular (Django convention)
     class Visibility(models.TextChoices):
         PUBLIC = 'public', _('Public')
         PRIVATE = 'private', _('Private')
+        INTERNAL = 'internal', _('Internal')
 
     title = models.CharField(max_length=150)
     content = models.TextField(blank=True)
@@ -30,7 +30,6 @@ class NewsEvent(models.Model):  # Renamed to singular (Django convention)
         default=Category.NEWS
     )
 
-    # Specific date for the event/news item
     date = models.DateField() 
 
     image = models.ImageField(

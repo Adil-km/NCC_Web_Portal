@@ -10,10 +10,6 @@ from events.models import NewsEvent
 import logging
 logger = logging.getLogger(__name__)
 
-
-# Create your views here.
-
-
 def events(request):
     events = NewsEvent.objects.all().filter(visibility="public").order_by("-date", "-created_at")
     return render(request, "events/events.html",{'events': events})
@@ -45,8 +41,7 @@ def event_detail(request, pk):
     })
 
 
-# dashboard
-
+# Events dashboard
 @login_required
 def manage_events(request):
     if not user_has_tag(request.user, "news_editor"):

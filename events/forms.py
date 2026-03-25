@@ -4,7 +4,6 @@ from .models import NewsEvent
 
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg']
 
-
 class NewsEventForm(forms.ModelForm):
 
     class Meta:
@@ -56,5 +55,4 @@ class NewsEventForm(forms.ModelForm):
                 raise ValidationError(
                     "Only PNG and JPEG images are allowed."
                 )
-
         return image
