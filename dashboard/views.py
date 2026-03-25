@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 @faculty_required
-def addtag(request):
+def addrole(request):
     selected_user = None
 
     user_id = request.GET.get('user') or request.POST.get('user')

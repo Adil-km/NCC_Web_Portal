@@ -8,7 +8,7 @@ from homepage.views import manage_homepage, upload_homepage, delete_homepage_ima
 
 urlpatterns = [
     path('', views.profile_view, name="profile" ),
-    path('addtag/', views.addtag, name="addtag" ),
+    path('addrole/', views.addrole, name="addrole" ),
     
     # Gallery Dashboard
     path('gallery/', manage_gallery, name="dashboard_gallery" ),

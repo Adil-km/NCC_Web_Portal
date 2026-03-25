@@ -45,6 +45,13 @@
                     Download
                 </a>
                 {% endif %}
+
+                <form action="{% url 'dashboard_delete_notice' notice.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+                {% if user.role == 'FACULTY' %}
+                {% endif %}
             </div>
 
         </div>

@@ -1,5 +1,4 @@
-from django.shortcuts import redirect, render
-
+from django.shortcuts import get_object_or_404, redirect, render
 from notice.forms import NoticeForm
 from notice.models import Notice
 
@@ -22,3 +21,12 @@ def upload_notice(request):
         form = NoticeForm()
 
     return render(request, 'dashboard/upload_notice.html', {'form': form})
+
+def delete_notice(request, id):
+    notice = get_object_or_404(Notice, id=id)
+
+    if request.method == "POST":
+        notice.delete()
+        return redirect('dashboard_notice')
+
+    return render(request, 'dashboard/confirm_delete.html', {'notice': notice })

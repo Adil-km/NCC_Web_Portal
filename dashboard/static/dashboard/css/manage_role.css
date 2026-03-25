@@ -1,7 +1,7 @@
 /* ---------------- */
 /* manage_role.html */
 /* ---------------- */
-.addtag-container {
+.addrole-container {
     max-width: 650px;
     margin: 40px auto;
     padding: 30px;
@@ -11,7 +11,7 @@
     color: var(--black);
 }
 
-.addtag-container h2 {
+.addrole-container h2 {
     text-align: center;
     font-size: var(--heading-1);
     color: var(--brown);
@@ -19,7 +19,7 @@
     font-weight: 700;
 }
 
-.addtag-container label {
+.addrole-container label {
     display: block;
     margin-bottom: 6px;
     font-size: var(--text-1);
@@ -27,7 +27,7 @@
     color: var(--black);
 }
 
-.addtag-container select {
+.addrole-container select {
     width: 100%;
     padding: 12px 14px;
     border-radius: 10px;
@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-.addtag-container select:focus {
+.addrole-container select:focus {
     outline: none;
     border-color: var(--brown-dark);
 }
@@ -101,7 +101,7 @@
     font-weight: 800;
 }
 
-.addtag-container input[type="submit"] {
+.addrole-container input[type="submit"] {
     width: 100%;
     padding: 14px;
     border-radius: 9px;
@@ -113,16 +113,16 @@
     cursor: pointer;
 }
 
-.addtag-container input[type="submit"]:hover {
+.addrole-container input[type="submit"]:hover {
     background: var(--brown-dark);
 }
 
 @media (max-width: 480px) {
-    .addtag-container {
+    .addrole-container {
         padding: 22px;
     }
 
-    .addtag-container h2 {
+    .addrole-container h2 {
         font-size: var(--heading-2);
     }
 }

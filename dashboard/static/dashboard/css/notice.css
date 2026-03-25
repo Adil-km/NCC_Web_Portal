@@ -20,6 +20,19 @@
 .download-btn:hover {
     background-color: #1d4ed8;
 }
+.delete-btn {
+    padding: 9px 12px;
+    background-color: #b43441;
+    color: white;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+}
+.delete-btn:hover {
+    background-color: #78222A;
+}
 
 .notice-list {
     display: flex;
