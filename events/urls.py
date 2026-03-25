@@ -8,6 +8,4 @@ urlpatterns = [
     path('events/', views.event_events, name="event_events" ),
     path('achievement/', views.achievement_events, name="achievement_events" ),
     path('event_detail/<int:pk>/', views.event_detail, name="event_detail" ),
-
-    # path('manage/', views.manage_events, name='dashboard_events'),
 ]

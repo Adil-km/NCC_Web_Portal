@@ -25,7 +25,7 @@ Manage Gallery
           >
 
           <div class="actions">
-            <form method="GET" action="{% url 'edit_image' image.id %}">
+            <form method="GET" action="{% url 'edit_gallery' image.id %}">
               <button 
               title="Update"
               type="submit" 
@@ -35,7 +35,7 @@ Manage Gallery
               </button>
             </form>
 
-            <form method="POST" action="{% url 'delete_image' image.id %}">
+            <form method="POST" action="{% url 'delete_gallery' image.id %}">
               {% csrf_token %}
               <button
               title="Delete"

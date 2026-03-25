@@ -4,7 +4,6 @@ from django.utils import timezone
 
 class Gallery(models.Model):
 
-    # CATEGORY CHOICES
     CATEGORY_CHOICES = [
         ('general', 'General'),
         ('boys', 'NCC Army Boys'),
@@ -12,10 +11,10 @@ class Gallery(models.Model):
         ('naval', 'NCC Naval'),
     ]
 
-    # VISIBILITY CHOICES
     VISIBILITY_CHOICES = [
         ('public', 'Public'),
         ('private', 'Private'),
+        ('internal', 'Internal'),
     ]
 
     title = models.CharField(max_length=150)

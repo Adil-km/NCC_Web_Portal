@@ -1,15 +1,10 @@
-import csv
-import json
-import re
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import Group
-from django.views.decorators.csrf import ensure_csrf_cookie
 from accounts.models import User, UserTag
-from accounts.utils import user_has_tag, user_tag_codes
-from attendance.forms import ActivityForm
-from attendance.models import Activity, Attendance
+from accounts.utils import user_has_tag
+from attendance.models import Attendance
 from gallery.forms import UploadImageForm
 from gallery.models import Gallery
 from events.forms import NewsEventForm
@@ -142,7 +137,7 @@ def upload_gallery(request):
     )
 
 @login_required
-def edit_image(request, pk):
+def edit_gallery(request, pk):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
     
@@ -169,7 +164,7 @@ def edit_image(request, pk):
     )
 
 @login_required
-def delete_image(request, pk):
+def delete_gallery(request, pk):
     if not user_has_tag(request.user, "gallery_manager"):
         return HttpResponse("You are not allowed")
     
