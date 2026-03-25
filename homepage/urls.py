@@ -10,5 +10,4 @@ urlpatterns = [
     path('achievements/', views.achievements, name="achievements" ),
     path('wings/', views.wings, name="wings" ),
     path('contact/', views.contact, name="contact" ),
-    # path('events/', views.events, name="events" ),
 ]
