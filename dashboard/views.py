@@ -49,15 +49,6 @@ def profile(request):
         "user_tags": user_tags
     })
 
-# Download or resource section
-@login_required
-def resources(request):
-    return render(request, 'dashboard/resources.html')
-
-@login_required
-def upload_resources(request):
-    return render(request, "dashboard/upload_resources.html")
-
 @login_required
 def profile_view(request):
     profile_user = request.user

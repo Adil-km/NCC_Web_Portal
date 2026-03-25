@@ -28,11 +28,7 @@ urlpatterns = [
     path('homepage/upload/', upload_homepage, name="upload_homepage" ),
     path('homepage/upload/desc', upload_desc, name="upload_desc" ),
     path("homepage/delete/<int:pk>/", delete_homepage_image, name="delete_homepage_image"),
-    
 
-    path('resources/', views.resources, name='dashboard_resources'),
-    path('resources/upload/', views.upload_resources, name='dashboard_upload_resources'),
-    
     path('notice/',include("notice.urls") ),
     path("attendance/",include("attendance.urls")),
 

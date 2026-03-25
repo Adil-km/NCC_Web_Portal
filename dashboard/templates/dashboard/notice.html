@@ -20,7 +20,7 @@
 
             <div class="notice-left">
                 <div class="notice-icon">
-                    <!-- Bell Icon -->
+                    
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                          viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -46,7 +46,7 @@
                 </a>
                 {% endif %}
                 
-                {% if user.role == 'FACULTY' %}
+                {% if "downloads_manager" in USER_TAGS or user.role == 'FACULTY' %}
                 <form action="{% url 'dashboard_delete_notice' notice.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="delete-btn">Delete</button>

@@ -17,7 +17,6 @@ Cadet Profile
 <div class="content-area">
     <div class="profile-grid">
 
-        <!-- Left Card -->
         <div class="profile-card">
             <div class="identity-header">
                 <div class="large-avatar">
@@ -42,15 +41,10 @@ Cadet Profile
                     <span class="info-label">Date Joined</span>
                     <span class="info-val">{{ profile_user.date_joined|date:"M Y" }}</span>
                 </li>
-                <!-- <li class="info-item">
-                    <span class="info-label">Unit Status</span>
-                    <span class="info-val info-val-active">Active</span>
-                </li> -->
             </ul>
         </div>
 
         {% if user.role == 'CADET' %}
-        <!-- Right Card -->
         <div class="profile-card">
             <h3 class="section-title">Performance Overview</h3>
 
@@ -79,7 +73,6 @@ Cadet Profile
                     <tr>
                         <th>Activity</th>
                         <th>Date</th>
-                        <!-- <th>Status</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -92,13 +85,6 @@ Cadet Profile
                             </small>
                         </td>
                         <td>{{ record.activity.start_date|date:"d M, Y" }}</td>
-                        <!-- <td>
-                            {% if record.status == 'PRESENT' %}
-                                <span class="status-badge st-present">PRESENT</span>
-                            {% else %}
-                                <span class="status-badge st-absent">ABSENT</span>
-                            {% endif %}
-                        </td> -->
                     </tr>
                     {% endfor %}
                 </tbody>

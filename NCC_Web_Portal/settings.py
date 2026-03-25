@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
@@ -100,7 +100,7 @@ LOGGING = {
 if os.environ.get('DEV') == 'True':
 
     import psycopg2
-    print("[DEBUG]-------Connection to postgresql.....")
+    print("[DEBUG]-------Connection to postgresql----------")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -113,7 +113,7 @@ if os.environ.get('DEV') == 'True':
     }
 
 else:
-    print("[DEBUG]--------Connection to local sqlite DB.....")
+    print("[DEBUG]--------Connection to local sqlite DB---------")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -160,12 +160,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Global static (optional)
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Production
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type

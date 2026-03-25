@@ -6,7 +6,11 @@
 {% endblock head %}
 
 {% block heading %}
-    {% if edit %}Edit Event{% else %}Upload Event{% endif %}
+    {% if edit %}
+        Edit Event
+    {% else %}
+        Upload Event
+    {% endif %}
 {% endblock heading %}
 
 {% block body %}
@@ -16,8 +20,6 @@
         {% csrf_token %}
 
         {{ form.non_field_errors }}
-
-        <!-- Image -->
         <div>
             <label>Image</label>
             {% if edit and news_event.image %}
@@ -30,42 +32,36 @@
             {% endif %}
         </div>
 
-        <!-- Title -->
         <div>
             <label>Title</label>
             {{ form.title.errors }}
             {{ form.title }}
         </div>
 
-        <!-- Content -->
         <div>
             <label>Content</label>
             {{ form.content.errors }}
             {{ form.content }}
         </div>
 
-        <!-- Author -->
         <div>
             <label>Author (optional)</label>
             {{ form.author.errors }}
             {{ form.author }}
         </div>
 
-        <!-- Visibility -->
         <div>
             <label>Visibility</label>
             {{ form.visibility.errors }}
             {{ form.visibility }}
         </div>
 
-        <!-- Category -->
         <div>
             <label>Category</label>
             {{ form.category.errors }}
             {{ form.category }}
         </div>
 
-        <!-- Event Date -->
         <div>
             <label>Event Date</label>
             {{ form.date.errors }}

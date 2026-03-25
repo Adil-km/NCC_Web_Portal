@@ -10,7 +10,7 @@
         Edit Image
     {% else %}
         Upload Image
-        {% endif %}
+    {% endif %}
 {% endblock heading %}
 
 {% block body %}
@@ -21,7 +21,6 @@
 
         {{ form.non_field_errors }}
 
-        <!-- Image -->
         <div>
             <label>Image</label>
             {% if edit %}
@@ -34,26 +33,25 @@
                 {{ form.image }}
             {% endif %}
         </div>
-        <!-- Title -->
+
         <div>
             <label>Title</label>
             {{ form.title.errors }}
             {{ form.title }}
         </div>
-        <!-- Visibility -->
+
         <div>
             <label>Visibility</label>
             {{ form.visibility.errors }}
             {{ form.visibility }}
         </div>
-        <!-- Category -->
+
         <div>
             <label>Category</label>
             {{ form.category.errors }}
             {{ form.category }}
         </div>
 
-        <!-- Date -->
         <div>
             <label>Date</label>
             {{ form.date.errors }}

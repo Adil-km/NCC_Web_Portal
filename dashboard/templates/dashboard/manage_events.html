@@ -9,7 +9,6 @@
 Manage News & Events
 {% endblock heading %}
 
-
 {% block body %}
 <div class="event-grid">
 
@@ -29,7 +28,6 @@ Manage News & Events
             <a class="event-title" href="{% url 'event_detail' event.id %}">
                 <p>{{ event.title }}</p>
             </a>
-
 
             <div class="actions">
             <form method="GET" action="{% url 'dashboard_edit_event' event.id %}">
