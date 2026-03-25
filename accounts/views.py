@@ -24,9 +24,6 @@ def revoke_role(request, user_id, role_id):
     user.groups.remove(role)
     return redirect('user_detail', user_id=user.id)
 
-
-
-
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("home")
