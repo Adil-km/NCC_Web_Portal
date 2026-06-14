@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT your_project_name.wsgi:application
+web: gunicorn NCC_Web_Portal.wsgi:application --bind 0.0.0.0:$PORT
