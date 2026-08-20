@@ -273,6 +273,9 @@ This project is developed and maintained by:
 
 ---
 
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=adil-km&label=Repository%20view&color=0065ff&style=for-the-badge" alt="view-count" /> </p>
+
+
 ## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
