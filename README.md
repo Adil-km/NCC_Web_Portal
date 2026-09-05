@@ -270,6 +270,7 @@ This project is developed and maintained by:
     *   [![GitHub Badge](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/Adil-km)
 *   **Aswani Prem**
     *   [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/aswaniprem/)
+    *   [![GitHub Badge](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/aswani051)
 
 ---
 
