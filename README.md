@@ -36,35 +36,40 @@ A centralized administrative, tracking, and operational portal designed to moder
 
 ## Visual Demos and Screenshots
 
-Explore the platform's key modules and user interfaces through these visual walk-throughs:
+Explore the platform's key modules and user interfaces through these visual walk-throughs.
 
 ### Homepage & Public Portal
 *A modern public-facing portal showcasing unit achievements, news, and cadet activities.*
-![Homepage Demo](docs/assets/homepage_demo.gif)
+
+https://github.com/user-attachments/assets/b1f0fa58-ba16-4512-9e8d-32c05ffb6196
 
 ---
 
 ### Cadet Profile & Analytics Dashboard
 *Personalized dashboard highlighting attendance statistics, credit hours, and historical activity graphs.*
-![Profile Demo](docs/assets/profile_demo.gif)
+
+https://github.com/user-attachments/assets/c6b9dab1-8ba4-439a-b234-3249fbc830e0
 
 ---
 
 ### Dynamic Attendance Tracker
 *Schedules unit activities (parades, camps, drills) and dynamically aggregates attendance metrics in a batch-marking interface.*
-![Attendance Demo](docs/assets/attendance_demo.gif)
+
+https://github.com/user-attachments/assets/4d26e44d-1a35-4e44-859c-f5c08595a90b
 
 ---
 
 ### Attendance Reports & View
 *Filtering, analyzing, and exporting attendance reports for individual cadets and unit wings.*
-![Attendance Reports Demo](docs/assets/attendance_view_demo.gif)
+
+https://github.com/user-attachments/assets/f42275df-278c-4475-94d4-c6a772902c51
 
 ---
 
 ### Cloud Media Gallery Manager
 *Media gallery CMS that uploads wing-specific images directly to Cloudinary CDN with real-time sync.*
-![Gallery Manager Demo](docs/assets/gallery_manager_demo.gif)
+
+https://github.com/user-attachments/assets/cb0d51fa-d756-4277-ab41-86dec7310cd5
 
 ---
 
@@ -270,6 +275,7 @@ This project is developed and maintained by:
     *   [![GitHub Badge](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/Adil-km)
 *   **Aswani Prem**
     *   [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/aswaniprem/)
+    *   [![GitHub Badge](https://img.shields.io/badge/GitHub-Profile-black?style=flat&logo=github)](https://github.com/aswani051)
 
 ---
 
